@@ -1,0 +1,123 @@
+.loginFormDiv {
+	width: 50%;
+}
+.iconStyle {
+	/* border: 2px solid red; */
+	margin-top: 15vh;
+	/* text-align: center; */
+	font-family: "Poppins", sans-serif;
+	font-size: 2.1rem;
+	font-weight: 600;
+}
+.iconTagLine {
+	/* border: 2px solid red; */
+	width: 50%;
+	margin: 15px auto 0 auto;
+	text-align: center;
+	font-family: "Poppins", sans-serif;
+	font-size: 0.9rem;
+	color: rgba(0, 0, 0, 0.411);
+	font-weight: 500;
+}
+.inputDiv {
+	/* border: 2px solid red; */
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.inputComponent {
+	margin-top: 40px;
+}
+.passwordComponent {
+	margin-top: 20px;
+}
+.forgotPasswordLink {
+	margin-top: 15px;
+	display: block;
+	text-align: end;
+	font-family: "Poppins", sans-serif;
+	color: #01276d;
+	font-weight: 500;
+	/* border: 2px solid red; */
+}
+.signInBtn {
+	margin-top: 20px;
+	/* display: block; */
+	width: 100%;
+	height: 45px;
+	font-family: "Poppins", sans-serif;
+	font-size: 1rem;
+	font-weight: 500;
+	background-color: #0066b2;
+	color: white;
+	outline: none;
+	border: none;
+	border-radius: 20px;
+	transition: 0.3s;
+}
+.signInBtn:hover {
+	background-color: #005291;
+}
+.noAccPara {
+	/* border: 2px solid red; */
+	margin-top: 25px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-family: "Poppins", sans-serif;
+	font-size: 1rem;
+	font-weight: 500;
+}
+.SignUpLink {
+	color: #01276d;
+}
+@media screen and (max-width: 1308px) {
+	.iconTagLine {
+		width: 60%;
+	}
+	.inputDiv {
+		width: 70%;
+	}
+}
+@media screen and (max-width: 1095px) {
+	.iconTagLine {
+		width: 70%;
+	}
+	.inputDiv {
+		width: 80%;
+	}
+}
+@media screen and (max-width: 937px) {
+	.iconTagLine {
+		width: 80%;
+	}
+	.inputDiv {
+		width: 90%;
+	}
+}
+@media screen and (max-width: 585px) {
+	.noAccPara {
+		font-size: 0.8rem;
+	}
+}
+@media screen and (max-width: 568px) {
+	.loginFormDiv {
+		width: 100%;
+	}
+	.iconTagLine {
+		width: 70%;
+	}
+	.inputDiv {
+		width: 80%;
+	}
+	.noAccPara {
+		font-size: 1rem;
+	}
+}
+@media screen and (max-width: 466px) {
+	.iconTagLine {
+		width: 80%;
+	}
+	.inputDiv {
+		width: 90%;
+	}
+}

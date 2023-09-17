@@ -1,0 +1,252 @@
+.NavbarBackground {
+	height: 100px;
+	width: 100%;
+	background-color: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.iconStyle {
+	font-family: "Poppins", sans-serif;
+	font-size: 2.1rem;
+	font-weight: 600;
+	width: 100%;
+	height: 100%;
+}
+.navBarLeftDiv {
+	/* margin-top: 10px; */
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin-left: 30px;
+	gap: 30px;
+	/* border: 2px solid red; */
+}
+.inputDiv {
+	height: 35px;
+	background-color: rgb(243, 243, 243);
+	width: 270px;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+}
+.searchIcon {
+	margin-left: 9px;
+}
+.input {
+	outline: none;
+	border: none;
+	margin-left: 10px;
+	background-color: rgb(243, 243, 243);
+	font-family: "Poppins", sans-serif;
+	font-size: 0.8rem;
+	font-weight: 400;
+	letter-spacing: 0.03rem;
+	width: 215px;
+}
+.navBarRightDiv {
+	/* border: 2px solid red; */
+	display: flex;
+	align-items: center;
+	gap: 50px;
+	margin-right: 40px;
+}
+.rightIcon1,
+.rightIcon2,
+.rightIcon3 {
+	font-size: 1.4rem;
+	color: black;
+	position: relative;
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+}
+.rightIcon1:hover,
+.rightIcon2:hover,
+.rightIcon3:hover {
+	color: #00009caf;
+}
+.rightIconReport {
+	font-size: 1.5rem;
+	color: black;
+}
+.rightIconReport:hover {
+	color: rgb(128, 2, 2);
+	cursor: pointer;
+}
+.hamBurger {
+	display: none;
+	cursor: pointer;
+}
+
+.profilePictureDiv {
+	height: 55px;
+	width: 55px;
+	border-radius: 50%;
+	overflow: hidden;
+	/* border: 2px solid red; */
+}
+.profilePicture {
+	width: 100%;
+}
+.settingIconBar {
+	position: absolute;
+	z-index: 10;
+	top: 55px;
+	left: -25px;
+	background-color: #fff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.03), 0 10px 10px rgba(0, 0, 0, 0.07), 0 20px 25px rgba(0, 0, 0, 0.05), 0 30px 40px rgba(0, 0, 0, 0.03);
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+	font-family: "Poppins", sans-serif;
+	font-size: 1.1rem;
+	font-weight: 600;
+	visibility: hidden;
+	opacity: 0;
+	transform: translateY(-40px);
+	transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.settingIconBar::before {
+	content: "";
+	position: absolute;
+	top: -10px;
+	left: 38px;
+	transform: translateX(-50%);
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #ececec;
+}
+.settingIconBar li {
+	height: 50px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.259);
+	color: black;
+	gap: 10px;
+	text-align: center;
+}
+.dropdownIcon {
+	margin-left: 15px;
+}
+.rightIcon2:hover .settingIconBar {
+	visibility: visible;
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.settingIconBar li:hover {
+	color: #0202c4af;
+}
+.hamBurgerList {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 80px;
+	left: -100vw;
+	width: 100%;
+	background-color: #fff;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.03), 0 8px 8px rgba(0, 0, 0, 0.07), 0 12px 20px rgba(0, 0, 0, 0.05), 0 30px 40px rgba(0, 0, 0, 0.03);
+	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.hamBurgerList li {
+	text-align: center;
+	height: 65px;
+	display: flex;
+	gap: 15px;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.259);
+	font-family: "Poppins", sans-serif;
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+.mobileDropDownTrue .hamBurgerList {
+	left: 0px;
+}
+.colouring {
+	color: #0202c4af;
+}
+.hamBurgerList li:hover {
+	color: #0202c4af;
+}
+.redLogOut:hover {
+	color: rgb(128, 2, 2) !important;
+}
+
+@media screen and (max-width: 1066px) {
+	.navBarLeftDiv {
+		margin-left: 20px;
+		gap: 20px;
+	}
+	.navBarRightDiv {
+		gap: 40px;
+	}
+}
+@media screen and (max-width: 994px) {
+	.navBarLeftDiv {
+		margin-left: 10px;
+	}
+}
+@media screen and (max-width: 925px) {
+	.navBarLeftDiv {
+		margin-left: 10px;
+	}
+	.navBarRightDiv {
+		margin-right: 30px;
+	}
+}
+@media screen and (max-width: 901px) {
+	.inputDiv {
+		display: none;
+	}
+}
+@media screen and (max-width: 791px) {
+	.navBarRightDiv {
+		margin-right: 20px;
+		gap: 30px;
+	}
+	.rightIcon {
+		font-size: 1.2rem;
+	}
+	.rightIconReport {
+		font-size: 1.3rem;
+	}
+}
+@media screen and (max-width: 564px) {
+	.iconStyle {
+		font-size: 2rem;
+		height: 70%;
+	}
+}
+@media screen and (max-width: 533px) {
+	.rightIconReport {
+		display: none;
+	}
+}
+@media screen and (max-width: 472px) {
+	.profilePictureDiv {
+		height: 45px;
+		width: 45px;
+	}
+	.settingIconBar {
+		width: 170px;
+	}
+}
+@media screen and (max-width: 456px) {
+	.rightIcon1,
+	.rightIcon2,
+	.rightIcon3 {
+		display: none;
+	}
+	.hamBurger {
+		display: block;
+	}
+	.navBarRightDiv {
+		gap: 20px;
+	}
+}
+@media screen and (max-width: 347px) {
+	.iconStyle {
+		font-size: 1.5rem;
+	}
+}

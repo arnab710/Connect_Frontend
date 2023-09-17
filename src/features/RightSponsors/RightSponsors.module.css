@@ -1,0 +1,7 @@
+.backgroundDiv {
+	width: 25%;
+	height: 400px;
+	background-color: #fff;
+	position: sticky;
+	top: 15px;
+}

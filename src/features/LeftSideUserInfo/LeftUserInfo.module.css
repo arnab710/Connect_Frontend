@@ -1,0 +1,80 @@
+.backgroundDiv {
+	width: 25%;
+	height: fit-content;
+	/* height: 400px; */
+	background-color: #fff;
+	position: sticky;
+	top: 15px;
+}
+.contentBox {
+	/* border: 2px solid red; */
+	padding: 20px;
+}
+.photoUserDetails {
+	/* margin-top: 20px; */
+	display: flex;
+	gap: 5%;
+	align-items: center;
+	height: 95px;
+	border-bottom: 0.5px solid rgba(0, 0, 0, 0.155);
+}
+.userPhotoDiv {
+	height: 55px;
+	width: 55px;
+	border-radius: 50%;
+	background-color: #fff;
+	overflow: hidden;
+}
+.userPhoto {
+	width: 100%;
+}
+.photoInfo {
+	/* border: 1px solid red; */
+	font-family: "Poppins", sans-serif;
+}
+.userFullName {
+	display: flex;
+	gap: 8px;
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+.userFollowersCount {
+	font-size: 0.7rem;
+	font-family: 400;
+	margin-top: 5px;
+	color: rgba(0, 0, 0, 0.726);
+}
+.locationAndJobDiv {
+	height: 85px;
+	border-bottom: 0.5px solid rgba(0, 0, 0, 0.155);
+}
+.locationDiv {
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	gap: 7%;
+	font-family: "Poppins", sans-serif;
+}
+.userIcon {
+	font-size: 1.3rem;
+	color: #00308f;
+}
+.location {
+	font-size: 1rem;
+	font-weight: 500;
+	color: rgba(0, 0, 0, 0.497);
+}
+.bioHead {
+	margin-top: 10px;
+	font-family: "Poppins", sans-serif;
+	font-size: 1rem;
+	font-weight: 700;
+	color: #00308f;
+}
+.bio {
+	margin-top: 10px;
+	font-family: "Poppins", sans-serif;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: rgba(0, 0, 0, 0.438);
+}

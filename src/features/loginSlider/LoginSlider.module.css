@@ -1,0 +1,96 @@
+.loginSliderDiv {
+	width: 50%;
+	/* border: 2px solid red; */
+	background-color: #002e62;
+	overflow-x: hidden;
+}
+.imageWrapper {
+	display: flex;
+	/* border: 2px solid pink; */
+	margin-top: 20vh;
+	width: 300%;
+	justify-content: space-around;
+	transition: transform 1s ease-in-out;
+}
+.sliderImageContainer {
+	/* border: 1px solid red; */
+	width: 400px;
+}
+.sliderImage {
+	width: 100%;
+	display: block;
+	border-radius: 20px;
+}
+.sliderHeadLine {
+	color: white;
+	margin: 20px;
+	text-align: center;
+	font-family: "Poppins", sans-serif;
+	font-size: 1.5rem;
+	font-weight: 400;
+	letter-spacing: 0.05rem;
+	/* border: 2px solid green; */
+}
+.sliderParaDiv {
+	/* border: 2px solid pink; */
+	width: 70%;
+	margin: auto;
+}
+.sliderPara {
+	color: rgba(255, 255, 255, 0.768);
+	text-align: center;
+	font-family: "Poppins", sans-serif;
+	font-size: 1rem;
+}
+.bulletDiv {
+	/* border: 2px solid red; */
+	display: flex;
+	width: 50px;
+	margin: 40px auto 50vh auto;
+	justify-content: space-between;
+}
+.bulletSpan {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.51);
+	/* margin: 0 5px; */
+	cursor: pointer;
+}
+.activatedBullet {
+	background-color: white;
+}
+
+@media screen and (max-width: 868px) {
+	.sliderImageContainer {
+		width: 350px;
+	}
+	.sliderHeadLine {
+		font-size: 1.3rem;
+	}
+	.sliderPara {
+		font-size: 0.8rem;
+	}
+}
+@media screen and (max-width: 722px) {
+	.sliderImageContainer {
+		width: 320px;
+	}
+	.sliderHeadLine {
+		font-size: 1.1rem;
+	}
+	.bulletSpan {
+		width: 8px;
+		height: 8px;
+	}
+}
+@media screen and (max-width: 665px) {
+	.sliderImageContainer {
+		width: 250px;
+	}
+}
+@media screen and (max-width: 568px) {
+	.loginSliderDiv {
+		display: none;
+	}
+}

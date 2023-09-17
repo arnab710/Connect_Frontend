@@ -1,0 +1,9 @@
+.HomeBackground {
+	background-color: rgba(189, 188, 188, 0.197);
+}
+.heroSection {
+	margin: 30px auto 0 auto;
+	width: 90%;
+	display: flex;
+	gap: 3%;
+}
