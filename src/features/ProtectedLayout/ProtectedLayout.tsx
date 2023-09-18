@@ -19,7 +19,7 @@ const ProtectedLayout = () => {
 	}, [userID]);
 
 	useEffect(() => {
-		if (!userID && data?.result === "fail" && !isError) navigate("/login");
+		if ((!userID && data?.result === "fail") || (!userID && isError)) navigate("/login");
 		else if (data?.result === "pass") {
 			dispatch(updateUserInfo(updateUserValue(data.myInfo)));
 			dispatch(updateUserFollowers(data.myInfo.followers));
