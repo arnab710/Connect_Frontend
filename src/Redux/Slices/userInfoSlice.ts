@@ -45,7 +45,7 @@ export const userSlice = createSlice({
 			state.country = "";
 			state.email = "";
 			state.occupation = "";
-			state.followings = [];
+			state.followers = [];
 			state.followings = [];
 			state.createdAt = "";
 		},
