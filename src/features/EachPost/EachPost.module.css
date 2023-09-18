@@ -147,10 +147,24 @@
 	align-items: center;
 	gap: 7%;
 	cursor: pointer;
+	outline: none;
+	border: none;
+	background-color: white;
 }
 .commentDiv:hover .reactIcons2 {
 	transform: scale(1.1);
 }
 .alreadyLiked {
 	color: red;
+}
+.commentSection {
+	margin-top: 20px;
+}
+.commentHeader {
+	font-size: 1rem;
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+}
+.totalCommentDiv {
+	margin-top: 15px;
 }

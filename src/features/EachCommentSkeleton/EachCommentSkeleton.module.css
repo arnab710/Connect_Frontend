@@ -1,0 +1,36 @@
+.overallCommentDiv {
+	padding: 15px 0;
+	border-bottom: 0.5px solid rgba(0, 0, 0, 0.24);
+}
+.overallCommentDiv:last-child {
+	border-bottom: none;
+}
+.eachCommentDiv {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	/* border: 2px solid red; */
+}
+.userImg {
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+}
+.userInfo {
+	width: 100%;
+	font-family: "Poppins", sans-serif;
+}
+.deleteIcon {
+	font-size: 1rem;
+	font-weight: 500;
+	color: rgb(159, 0, 0);
+}
+.headName {
+	font-size: 0.9rem;
+	font-weight: 400;
+}
+.userComment {
+	margin-top: 5px;
+	font-size: 0.9rem;
+	font-weight: 600;
+}

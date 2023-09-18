@@ -2,7 +2,7 @@ import { RiUserFollowFill } from "react-icons/ri";
 import { AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
 import { format } from "date-fns";
-import React, { useReducer, useEffect, useRef } from "react";
+import React, { useState, useReducer, useEffect, useRef } from "react";
 import { PostPropType } from "../../Types/EachPostTypes";
 import style from "./EachPost.module.css";
 import useIntersectionObserver from "../../Hooks/useIntersectionObserver";
@@ -13,9 +13,16 @@ import { likeReducer } from "../../Reducers/PostLikeReducer";
 import { likeType } from "../../Types/likeTypes";
 import { Action } from "../../Types/signupUserType";
 import useDisLike from "../../Hooks/useDisLike";
+import useAllCommentFetch from "../../Hooks/useAllCommentFetch";
+import EachComment from "../EachComment/EachComment";
+import TotalCommentSkeleton from "../totalCommentSkeleton/totalCommentSkeleton";
 
 const EachPost: React.FC<PostPropType> = ({ post }) => {
+	const [enabler, setEnabler] = useState(false);
+
 	const videoRef = useRef<HTMLVideoElement | null>(null);
+
+	const { data: commentData, isLoading: isCommentLoading, isError: isCommentError } = useAllCommentFetch(enabler, post._id);
 
 	const isVideoVisible = useIntersectionObserver(videoRef, { threshold: 0.7 });
 
@@ -28,6 +35,13 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 
 	const { mutate: likefxn, isError: isLikeError, isLoading: isLikeLoading } = useLike();
 	const { mutate: dislikefxn, isError: isDislikeError, isLoading: isDislikeLoading } = useDisLike();
+
+	useEffect(() => {
+		if (isCommentError)
+			toast.error("Something Went Wrong While Getting Comments", {
+				style: styleObj,
+			});
+	}, [isCommentError]);
 
 	useEffect(() => {
 		if (isLikeError && likeState.likedByUser === true) {
@@ -128,11 +142,24 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 					{likeState.likedByUser ? <AiTwotoneHeart className={style.reactIconsWithRed} /> : <AiOutlineHeart className={style.reactIcons} />}
 					<span className={`${style.reactText} ${likeState.likedByUser && style.alreadyLiked}`}>Like</span>
 				</button>
-				<div className={style.commentDiv}>
+				<button
+					className={style.commentDiv}
+					onClick={() => {
+						setEnabler(true);
+					}}
+				>
 					<BiComment className={style.reactIcons2} />
 					<span className={style.reactText}>Comment</span>
-				</div>
+				</button>
 			</section>
+			{enabler && (
+				<section className={style.commentSection}>
+					<h1 className={style.commentHeader}>Latest Comments</h1>
+					<div className={style.totalCommentDiv}>
+						{isCommentLoading ? <TotalCommentSkeleton /> : commentData?.allComments?.map((eachComment) => <EachComment eachComment={eachComment} key={eachComment._id} />)}
+					</div>
+				</section>
+			)}
 		</div>
 	);
 };
