@@ -158,7 +158,7 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 				<>
 					<CommentInput postID={post._id} setCountComment={setCountComment} />
 					<section className={style.commentSection}>
-						<h1 className={style.commentHeader}>{post.comments > 0 ? `Latest Comments` : `No Comments Yet`}</h1>
+						<h1 className={style.commentHeader}>{countComment > 0 ? `Latest Comments` : `No Comments Yet`}</h1>
 						<div className={style.totalCommentDiv}>
 							{isCommentLoading ? <TotalCommentSkeleton /> : commentData?.allComments?.map((eachComment) => <EachComment eachComment={eachComment} key={eachComment._id} />)}
 						</div>
