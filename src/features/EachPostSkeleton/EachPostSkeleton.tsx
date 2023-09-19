@@ -7,9 +7,8 @@ const EachPostSkeleton: React.FC = () => {
 	return (
 		<div className={style.backgroundDiv}>
 			<div className={style.postProfileInfo}>
-				<div className={style.profilePictureDiv}>
-					<Skeleton circle={true} className={style.postUserPictureSkeleton} />
-				</div>
+				<Skeleton className={style.postUserPictureSkeleton} />
+
 				<div className={style.userInfoDiv}>
 					<div>
 						<p className={style.userName}>

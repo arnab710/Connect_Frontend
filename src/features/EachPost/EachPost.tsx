@@ -16,6 +16,7 @@ import useDisLike from "../../Hooks/useDisLike";
 import useAllCommentFetch from "../../Hooks/useAllCommentFetch";
 import EachComment from "../EachComment/EachComment";
 import TotalCommentSkeleton from "../totalCommentSkeleton/totalCommentSkeleton";
+import CommentInput from "../CommentInput/CommentInput";
 
 const EachPost: React.FC<PostPropType> = ({ post }) => {
 	const [enabler, setEnabler] = useState(false);
@@ -153,12 +154,15 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 				</button>
 			</section>
 			{enabler && (
-				<section className={style.commentSection}>
-					<h1 className={style.commentHeader}>Latest Comments</h1>
-					<div className={style.totalCommentDiv}>
-						{isCommentLoading ? <TotalCommentSkeleton /> : commentData?.allComments?.map((eachComment) => <EachComment eachComment={eachComment} key={eachComment._id} />)}
-					</div>
-				</section>
+				<>
+					<CommentInput />
+					<section className={style.commentSection}>
+						<h1 className={style.commentHeader}>{post.comments > 0 ? `Latest Comments` : `No Comments Yet`}</h1>
+						<div className={style.totalCommentDiv}>
+							{isCommentLoading ? <TotalCommentSkeleton /> : commentData?.allComments?.map((eachComment) => <EachComment eachComment={eachComment} key={eachComment._id} />)}
+						</div>
+					</section>
+				</>
 			)}
 		</div>
 	);

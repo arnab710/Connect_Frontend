@@ -15,16 +15,10 @@
 	gap: 3%;
 	align-items: center;
 }
-.profilePictureDiv {
-	height: 60px;
-	width: 60px;
-	border-radius: 50%;
-	overflow: hidden;
-	/* border: 1px solid red; */
-}
 .postUserPictureSkeleton {
 	height: 60px;
 	width: 60px;
+	border-radius: 50%;
 }
 .postUserPicture {
 	width: 100%;

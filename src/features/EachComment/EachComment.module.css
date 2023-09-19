@@ -8,7 +8,7 @@
 .eachCommentDiv {
 	display: flex;
 	align-items: center;
-	gap: 10px;
+	justify-content: space-between;
 }
 .userPhotoDiv {
 	height: 40px;
@@ -20,7 +20,7 @@
 	width: 100%;
 }
 .userInfo {
-	width: 100%;
+	width: 91%;
 	font-family: "Poppins", sans-serif;
 }
 .headDateDiv {
