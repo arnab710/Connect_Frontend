@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import style from "./CommentInput.module.css";
 import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
+import usePostComment from "../../Hooks/usePostComment";
+import SmallBtnSpinner from "../SmallBtnSpinner/SmallBtnSpinner";
 
-const CommentInput: React.FC = () => {
+const CommentInput: React.FC<{ postID: string; setCountComment: React.Dispatch<React.SetStateAction<number>> }> = ({ postID, setCountComment }) => {
 	const [input, setInput] = useState<string>("");
 	const userPicture: string = useAppSelector((state) => state.user.profilePicture);
+
+	const { mutate: Comment, isLoading } = usePostComment(postID, input, setCountComment, setInput);
+
+	const handlePost = () => {
+		Comment();
+	};
 
 	return (
 		<>
@@ -20,7 +28,15 @@ const CommentInput: React.FC = () => {
 			</section>
 			{input && (
 				<div className={style.btnDiv}>
-					<button className={style.PostBtn}>Post</button>
+					<button className={style.PostBtn} onClick={handlePost} disabled={isLoading}>
+						{isLoading ? (
+							<p>
+								<SmallBtnSpinner />
+							</p>
+						) : (
+							`POST`
+						)}
+					</button>
 				</div>
 			)}
 		</>

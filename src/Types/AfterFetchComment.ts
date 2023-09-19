@@ -15,3 +15,16 @@ export interface eachCommentType {
 	updatedAt: string;
 	__v: number;
 }
+export interface IpostComment {
+	result: "pass";
+	message: string;
+	newComment: {
+		post: string;
+		user: string;
+		comment: string;
+		_id: string;
+		createdAt: string;
+		updatedAt: string;
+		__v: string;
+	};
+}

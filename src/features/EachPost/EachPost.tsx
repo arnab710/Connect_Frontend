@@ -33,6 +33,7 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 	};
 
 	const [likeState, likeDispatch] = useReducer(likeReducer, initialLike) as [likeType, React.Dispatch<Action>];
+	const [countComment, setCountComment] = useState<number>(post.comments);
 
 	const { mutate: likefxn, isError: isLikeError, isLoading: isLikeLoading } = useLike();
 	const { mutate: dislikefxn, isError: isDislikeError, isLoading: isDislikeLoading } = useDisLike();
@@ -134,7 +135,7 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 				<span className={style.middleDot}>·</span>
 
 				<div className={style.CountDiv}>
-					<p>{post.comments} </p>
+					<p>{countComment} </p>
 					<BiComment className={style.reactIconsComment} />
 				</div>
 			</section>
@@ -155,7 +156,7 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 			</section>
 			{enabler && (
 				<>
-					<CommentInput />
+					<CommentInput postID={post._id} setCountComment={setCountComment} />
 					<section className={style.commentSection}>
 						<h1 className={style.commentHeader}>{post.comments > 0 ? `Latest Comments` : `No Comments Yet`}</h1>
 						<div className={style.totalCommentDiv}>
