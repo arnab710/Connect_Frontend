@@ -1,3 +1,4 @@
+import he from "he";
 import { AiFillDelete } from "react-icons/ai";
 import React, { useState } from "react";
 import { eachCommentType } from "../../Types/AfterFetchComment";
@@ -9,6 +10,9 @@ import ModalContent from "../../components/ModalContent/ModalContent";
 const EachComment: React.FC<{ eachComment: eachCommentType; setCountComment: React.Dispatch<React.SetStateAction<number>>; postID: string }> = ({ eachComment, setCountComment, postID }) => {
 	const userID = useAppSelector((state) => state.user._id);
 	const [openModal, setOpenModal] = useState<boolean>(false);
+
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+	const decodedText = he.decode(eachComment.comment) as string;
 
 	const { mutate: deleteComment, isLoading } = useDeleteComment(eachComment._id, setCountComment, postID);
 
@@ -37,7 +41,7 @@ const EachComment: React.FC<{ eachComment: eachCommentType; setCountComment: Rea
 							</button>
 						)}
 					</div>
-					<p className={style.userComment}>{eachComment.comment}</p>
+					<p className={style.userComment}>{decodedText}</p>
 				</div>
 				{openModal && (
 					<ModalContent mutateFxn={deleteComment} isLoading={isLoading} setOpenModal={setOpenModal} header="Delete Confirmation" para="Are You Sure You Want To Delete Your Comment?" button="DELETE" />
