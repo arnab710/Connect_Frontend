@@ -1,7 +1,63 @@
 .backgroundDiv {
+	padding: 14px;
 	width: 25%;
-	height: 400px;
+	height: fit-content;
 	background-color: #fff;
 	position: sticky;
 	top: 15px;
+}
+.headDiv {
+	/* border: 1px solid red; */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.SponsorHead {
+	font-size: 0.9rem;
+	font-weight: 600;
+	font-family: "Poppins", sans-serif;
+}
+.createAdHead {
+	font-weight: 400;
+	font-size: 0.7rem;
+	font-family: "Poppins", sans-serif;
+	color: rgba(0, 0, 0, 0.774);
+}
+.imgDiv {
+	width: 98%;
+	margin: 15px auto 0 auto;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.imgOverlay {
+	display: flex;
+	transition: transform 0.5s ease-in-out;
+}
+.img {
+	width: 100%;
+}
+.companyNameDiv {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 15px;
+	align-items: center;
+}
+.companyName {
+	font-size: 0.9rem;
+	font-family: "Poppins", sans-serif;
+	font-weight: 500;
+	letter-spacing: 0.05rem;
+}
+.companyWebsite {
+	font-size: 0.7rem;
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	color: rgba(0, 0, 0, 0.64);
+}
+.description {
+	margin-top: 15px;
+	font-family: "Poppins", sans-serif;
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: rgba(0, 0, 0, 0.488);
 }
