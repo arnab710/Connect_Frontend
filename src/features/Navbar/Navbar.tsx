@@ -102,15 +102,7 @@ const Navbar: React.FC = () => {
 				</ul>
 			</div>
 			{logoutPopUp && (
-				<ModalContent
-					isLoading={isLoading}
-					setOpenModal={setLogoutPopUp}
-					mutateFxn={logout}
-					header="Logout Confirmation"
-					para="Do You Really Wish to Leave and Log Out ?"
-					button="Logout"
-					paraStyle={style.paraStyle}
-				/>
+				<ModalContent isLoading={isLoading} setOpenModal={setLogoutPopUp} mutateFxn={logout} header="Logout Confirmation" para="Do You Really Wish to Leave and Logout?" button="Logout" />
 			)}
 		</>
 	);

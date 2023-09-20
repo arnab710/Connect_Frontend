@@ -12,13 +12,12 @@ const ModalContent: React.FC<{
 	header: string;
 	para: string;
 	button: string;
-	paraStyle: string;
-}> = ({ mutateFxn, isLoading, setOpenModal, header, para, button, paraStyle }) => {
+}> = ({ mutateFxn, isLoading, setOpenModal, header, para, button }) => {
 	return (
 		<Modal onClose={() => setOpenModal(false)}>
-			<>
+			<div className={style.backendModal}>
 				<h1 className={style.deleteHeader}>{header}</h1>
-				<p className={paraStyle}>{para}</p>
+				<p className={style.deletePara}>{para}</p>
 				<div className={style.btnDiv}>
 					<button className={style.cancelBtn} onClick={() => setOpenModal((c) => !c)}>
 						CANCEL
@@ -33,7 +32,7 @@ const ModalContent: React.FC<{
 						)}
 					</button>
 				</div>
-			</>
+			</div>
 		</Modal>
 	);
 };

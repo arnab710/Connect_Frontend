@@ -145,6 +145,7 @@
 	left: -100vw;
 	width: 100%;
 	background-color: #fff;
+	z-index: 100;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.03), 0 8px 8px rgba(0, 0, 0, 0.07), 0 12px 20px rgba(0, 0, 0, 0.05), 0 30px 40px rgba(0, 0, 0, 0.03);
 	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -171,17 +172,6 @@
 }
 .redLogOut:hover {
 	color: rgb(128, 2, 2) !important;
-}
-.paraStyle {
-	font-size: 0.9rem;
-	font-family: "Poppins", sans-serif;
-	font-weight: 500;
-	margin-top: 30px;
-	height: 50px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: rgba(255, 0, 0, 0.17);
 }
 
 @media screen and (max-width: 1066px) {

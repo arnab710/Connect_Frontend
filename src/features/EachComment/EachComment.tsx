@@ -40,15 +40,7 @@ const EachComment: React.FC<{ eachComment: eachCommentType; setCountComment: Rea
 					<p className={style.userComment}>{eachComment.comment}</p>
 				</div>
 				{openModal && (
-					<ModalContent
-						mutateFxn={deleteComment}
-						isLoading={isLoading}
-						setOpenModal={setOpenModal}
-						header="Delete Confirmation"
-						para="Are You Sure You Want To Delete Your Comment ?"
-						button="DELETE"
-						paraStyle={style.paraStyle}
-					/>
+					<ModalContent mutateFxn={deleteComment} isLoading={isLoading} setOpenModal={setOpenModal} header="Delete Confirmation" para="Are You Sure You Want To Delete Your Comment?" button="DELETE" />
 				)}
 			</div>
 		</div>
