@@ -11,8 +11,8 @@ const rotate = keyframes`
 `;
 
 const SmallBtnSpinner = styled(BiLoaderAlt)`
-	width: ${(props) => (props.height ? `${props.height}px` : `1.5rem`)};
-	height: ${(props) => (props.height ? `${props.width}px` : `1.5rem`)};
+	width: ${(props) => (props.height ? `${props.height}rem` : `1.5rem`)};
+	height: ${(props) => (props.height ? `${props.width}rem` : `1.5rem`)};
 	animation: ${rotate} 1.5s infinite linear;
 `;
 

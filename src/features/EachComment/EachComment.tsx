@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import { eachCommentType } from "../../Types/AfterFetchComment";
 import style from "./EachComment.module.css";
 import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
-import Modal from "../ModalWindow/Modal";
+import useDeleteComment from "../../Hooks/useDeleteComment";
+import ModalContent from "../../components/ModalContent/ModalContent";
 
-const EachComment: React.FC<{ eachComment: eachCommentType }> = ({ eachComment }) => {
+const EachComment: React.FC<{ eachComment: eachCommentType; setCountComment: React.Dispatch<React.SetStateAction<number>>; postID: string }> = ({ eachComment, setCountComment, postID }) => {
 	const userID = useAppSelector((state) => state.user._id);
 	const [openModal, setOpenModal] = useState<boolean>(false);
+
+	const { mutate: deleteComment, isLoading } = useDeleteComment(eachComment._id, setCountComment, postID);
 
 	return (
 		<div className={style.overallCommentDiv}>
@@ -37,16 +40,15 @@ const EachComment: React.FC<{ eachComment: eachCommentType }> = ({ eachComment }
 					<p className={style.userComment}>{eachComment.comment}</p>
 				</div>
 				{openModal && (
-					<Modal onClose={() => setOpenModal(false)}>
-						<div className={style.modalContent}>
-							<h1 className={style.deleteHeader}>Delete Confirmation</h1>
-							<p className={style.deletPara}>Are You Sure You Want To Delete Your Comment ?</p>
-							<div className={style.btnDiv}>
-								<button className={style.cancelBtn}>CANCEL</button>
-								<button className={style.deleteBtn2}>DELETE</button>
-							</div>
-						</div>
-					</Modal>
+					<ModalContent
+						mutateFxn={deleteComment}
+						isLoading={isLoading}
+						setOpenModal={setOpenModal}
+						header="Delete Confirmation"
+						para="Are You Sure You Want To Delete Your Comment ?"
+						button="DELETE"
+						paraStyle={style.paraStyle}
+					/>
 				)}
 			</div>
 		</div>

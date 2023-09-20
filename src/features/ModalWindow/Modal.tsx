@@ -1,6 +1,7 @@
 import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
+import { useEffect, useRef } from "react";
 
 const StyledModal = styled.div`
 	position: fixed;
@@ -54,9 +55,21 @@ const Button = styled.button`
 `;
 
 function Modal({ children, onClose }: { children: React.ReactNode; onClose: () => void }) {
+	const ref = useRef<HTMLDivElement | null>(null);
+
+	useEffect(() => {
+		const handleClick = (e: MouseEvent) => {
+			if (ref.current && !ref.current.contains(e.target as Node)) onClose();
+		};
+
+		document.addEventListener("click", handleClick, true);
+
+		return () => document.removeEventListener("click", handleClick, true);
+	}, [onClose]);
+
 	return createPortal(
 		<Overlay>
-			<StyledModal>
+			<StyledModal ref={ref}>
 				<Button onClick={onClose}>
 					<HiXMark />
 				</Button>
@@ -64,7 +77,7 @@ function Modal({ children, onClose }: { children: React.ReactNode; onClose: () =
 				<div>{children}</div>
 			</StyledModal>
 		</Overlay>,
-		document.body
+		document.querySelector<Element>("#modal") as Element
 	);
 }
 

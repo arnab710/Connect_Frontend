@@ -18,7 +18,11 @@ const CommentInput: React.FC<{ postID: string; setCountComment: React.Dispatch<R
 		<>
 			<section className={style.inputCommentSection}>
 				<div className={style.userPictureDiv}>
-					<img src={userPicture} className={style.userImg} alt="user's picture" />
+					<img
+						src={userPicture ? userPicture : `https://res.cloudinary.com/dmrlrtwbb/image/upload/v1694760858/24-248253_user-profile-default-image-png-clipart-png-download_zurjod.png`}
+						className={style.userImg}
+						alt="user's picture"
+					/>
 				</div>
 				<div className={style.commentInputAndPostDiv}>
 					<div className={style.commentInputDiv}>
@@ -31,7 +35,7 @@ const CommentInput: React.FC<{ postID: string; setCountComment: React.Dispatch<R
 					<button className={style.PostBtn} onClick={handlePost} disabled={isLoading}>
 						{isLoading ? (
 							<p>
-								<SmallBtnSpinner />
+								<SmallBtnSpinner width={1.1} height={1.1} />
 							</p>
 						) : (
 							`POST`
