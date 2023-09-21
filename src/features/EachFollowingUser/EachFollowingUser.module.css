@@ -1,0 +1,28 @@
+.eachPeopleBackgroundDiv {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.imgDiv {
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.img {
+	width: 100%;
+}
+.userInfoDiv {
+	width: 80%;
+}
+.userInfoName {
+	font-size: 0.95rem;
+	font-weight: 600;
+	font-family: "Poppins", sans-serif;
+}
+.userInfoOccupation {
+	font-size: 0.8rem;
+	font-weight: 400;
+	color: rgba(0, 0, 0, 0.604);
+	font-family: "Poppins", sans-serif;
+}

@@ -1,9 +1,9 @@
 .backgroundDiv {
 	background-color: white;
 	/* border: 2px solid red; */
-	width: 100%;
+	width: 95%;
 	padding: 20px;
-	margin-top: 40px;
+	margin: 40px auto 0 auto;
 }
 .backgroundDiv:first-child {
 	margin-top: 0;
@@ -49,7 +49,7 @@
 	color: rgba(0, 0, 0, 0.573);
 }
 .followIcon {
-	color: #025bb4;
+	color: black;
 	cursor: pointer;
 	font-size: 1.1rem;
 	transition: 0.2s ease-in-out;

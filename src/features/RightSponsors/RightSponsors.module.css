@@ -1,10 +1,12 @@
 .backgroundDiv {
-	padding: 14px;
-	width: 25%;
-	height: fit-content;
-	background-color: #fff;
+	width: 23%;
 	position: sticky;
 	top: 15px;
+	height: fit-content;
+}
+.sponsorsDiv {
+	padding: 14px;
+	background-color: #fff;
 }
 .headDiv {
 	/* border: 1px solid red; */
@@ -60,4 +62,18 @@
 	font-size: 0.75rem;
 	font-weight: 500;
 	color: rgba(0, 0, 0, 0.488);
+}
+.followingListDiv {
+	margin-top: 20px;
+	padding: 14px;
+	height: fit-content;
+	background-color: #fff;
+}
+.followHead {
+	font-size: 1rem;
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+}
+.followingDiv {
+	margin-top: 20px;
 }

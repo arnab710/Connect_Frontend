@@ -1,5 +1,5 @@
-import { RiUserFollowFill } from "react-icons/ri";
-import { AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
+// import { RiUserFollowFill } from "react-icons/ri";
+import { AiOutlineHeart, AiTwotoneHeart, AiOutlineUserAdd } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
 import { format } from "date-fns";
 import React, { useState, useReducer, useEffect, useRef } from "react";
@@ -17,9 +17,12 @@ import useAllCommentFetch from "../../Hooks/useAllCommentFetch";
 import EachComment from "../EachComment/EachComment";
 import TotalCommentSkeleton from "../totalCommentSkeleton/totalCommentSkeleton";
 import CommentInput from "../CommentInput/CommentInput";
+import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
 
 const EachPost: React.FC<PostPropType> = ({ post }) => {
 	const [enabler, setEnabler] = useState(false);
+
+	const userID = useAppSelector((state) => state.user._id);
 
 	const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -114,7 +117,7 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 						</p>
 						<p className={style.userLocation}>{getProperDate(post?.createdAt)}</p>
 					</div>
-					<RiUserFollowFill className={style.followIcon} />
+					{userID !== post.user._id && <AiOutlineUserAdd className={style.followIcon} />}
 				</div>
 			</div>
 			<section className={style.description}>{post?.description}</section>
