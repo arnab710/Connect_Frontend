@@ -66,13 +66,15 @@
 .followingListDiv {
 	margin-top: 20px;
 	padding: 14px;
-	height: fit-content;
+	height: 235px;
+	overflow-y: auto;
 	background-color: #fff;
 }
 .followHead {
 	font-size: 1rem;
 	font-family: "Poppins", sans-serif;
 	font-weight: 600;
+	text-align: center;
 }
 .followingDiv {
 	margin-top: 20px;

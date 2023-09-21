@@ -9,8 +9,8 @@ interface userInfo {
 	bio: string;
 	profilePicture: string;
 	coverPicture: string;
-	followings: { user: string; _id: string }[];
-	followers: { user: string; _id: string }[];
+	followings: { user: string; _id?: string }[];
+	followers: { user: string; _id?: string }[];
 	createdAt: string;
 }
 
@@ -25,8 +25,8 @@ interface payloadType {
 	coverPicture?: string;
 }
 
-type followingPayloadType = { user: string; _id: string }[];
+type followingPayloadType = { user: string; _id?: string }[];
 
-type followersPayloadType = { user: string; _id: string }[];
+type followersPayloadType = { user: string; _id?: string }[];
 
 export type { userInfo, payloadType, followingPayloadType, followersPayloadType };

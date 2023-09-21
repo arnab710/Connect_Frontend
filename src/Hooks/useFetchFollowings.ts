@@ -3,7 +3,7 @@ import { userFollowings } from "../Types/AfterFetchUserFollowings";
 import { APIFail } from "../Types/APIFailResponseTypes";
 
 const fetchUserFollowings = async (userID: string) => {
-	const API: string = `${import.meta.env.VITE_BACKEND_APP_PORT}/${import.meta.env.VITE_BACKEND_APP_API}/users/totalFollowers/${userID}`;
+	const API: string = `${import.meta.env.VITE_BACKEND_APP_PORT}/${import.meta.env.VITE_BACKEND_APP_API}/users/totalFollowings/${userID}`;
 
 	const response: Response = await fetch(API, {
 		credentials: "include",

@@ -29,10 +29,10 @@ export const userSlice = createSlice({
 			});
 		},
 		updateUserFollowings: (state, action: PayloadAction<followersPayloadType>) => {
-			state.followers = action.payload;
+			state.followings = action.payload;
 		},
 		updateUserFollowers: (state, action: PayloadAction<followingPayloadType>) => {
-			state.followings = action.payload;
+			state.followers = action.payload;
 		},
 		deleteUserInfo: (state) => {
 			state._id = "";

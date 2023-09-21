@@ -1,6 +1,4 @@
-// import { RiUserFollowFill } from "react-icons/ri";
-import { AiOutlineHeart, AiTwotoneHeart, AiOutlineUserAdd } from "react-icons/ai";
-import { HiUserRemove } from "react-icons/hi";
+import { AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
 import { format } from "date-fns";
 import React, { useState, useReducer, useEffect, useRef } from "react";
@@ -19,15 +17,12 @@ import EachComment from "../EachComment/EachComment";
 import TotalCommentSkeleton from "../totalCommentSkeleton/totalCommentSkeleton";
 import CommentInput from "../CommentInput/CommentInput";
 import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
+import FollowUnfollowBtn from "../../components/PostFollowUnfollowBtn/FollowUnfollowBtn";
 
 const EachPost: React.FC<PostPropType> = ({ post }) => {
 	const [enabler, setEnabler] = useState(false);
 
 	const userDetails = useAppSelector((state) => state.user);
-
-	const isFollowedByUser = userDetails.followings.some((val) => val.user === post.user._id);
-
-	console.log(isFollowedByUser);
 
 	const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -122,7 +117,7 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 						</p>
 						<p className={style.userLocation}>{getProperDate(post?.createdAt)}</p>
 					</div>
-					{userDetails._id !== post.user._id && isFollowedByUser ? <HiUserRemove className={style.unfollowIconColour} /> : <AiOutlineUserAdd className={style.followIcon} />}
+					{userDetails._id !== post.user._id && <FollowUnfollowBtn postUser={post.user._id} postUserName={post.user.firstName} />}
 				</div>
 			</div>
 			<section className={style.description}>{post?.description}</section>

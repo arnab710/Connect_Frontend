@@ -8,7 +8,7 @@ export interface followingUserType {
 
 export interface userFollowings {
 	result: "pass";
-	followers: {
+	followings: {
 		user: followingUserType;
 		_id: string;
 	}[];

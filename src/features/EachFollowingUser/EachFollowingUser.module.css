@@ -2,6 +2,12 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	min-height: 80px;
+	border-bottom: 0.5px solid rgba(0, 0, 0, 0.126);
+
+	&:last-child {
+		border-bottom: none;
+	}
 }
 .imgDiv {
 	height: 40px;
@@ -25,6 +31,7 @@
 }
 .userInfoOccupation {
 	font-size: 0.8rem;
+	margin-top: 5px;
 	font-weight: 400;
 	color: rgba(0, 0, 0, 0.604);
 	font-family: "Poppins", sans-serif;

@@ -48,23 +48,6 @@
 	font-family: "Poppins", sans-serif;
 	color: rgba(0, 0, 0, 0.573);
 }
-.followIcon {
-	color: #00308f;
-	cursor: pointer;
-	font-size: 1.1rem;
-	transition: 0.3s ease-in-out;
-}
-.followIcon:hover,
-.unfollowIconColour:hover {
-	transform: scale(1.2);
-}
-.unfollowIconColour {
-	color: rgba(210, 0, 0, 0.87);
-	font-size: 1.1rem;
-	font-family: "Poppins", sans-serif;
-	transition: 0.3s ease-in-out;
-	cursor: pointer;
-}
 .description {
 	/* border: 2px solid red; */
 	font-family: "Poppins", sans-serif;

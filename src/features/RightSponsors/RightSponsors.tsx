@@ -53,7 +53,7 @@ const RightSponsors: React.FC = () => {
 							<SmallBtnSpinner height={2} width={2} />
 						</p>
 					) : (
-						followingsArray?.followers.map((eachPeople, _id) => <EachFollowingUser key={_id} eachPeople={eachPeople} />)
+						followingsArray?.followings.map((eachPeople, _id) => <EachFollowingUser key={_id} eachPeople={eachPeople} />)
 					)}
 				</div>
 			</div>

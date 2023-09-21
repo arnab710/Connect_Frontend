@@ -9,8 +9,8 @@ type userInfoObj = {
 	country: string;
 	bio: string;
 	occupation: string;
-	followers: { user: string; _id: string }[];
-	followings: { user: string; _id: string }[];
+	followers: { user: string; _id?: string }[];
+	followings: { user: string; _id?: string }[];
 	createdAt: string;
 	updatedAt: string;
 };
