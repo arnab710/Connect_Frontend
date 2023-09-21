@@ -13,7 +13,10 @@
 	width: 100%;
 }
 .userInfoDiv {
-	width: 80%;
+	width: 82%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 .userInfoName {
 	font-size: 0.95rem;
@@ -25,4 +28,14 @@
 	font-weight: 400;
 	color: rgba(0, 0, 0, 0.604);
 	font-family: "Poppins", sans-serif;
+}
+.unfollowIconColour {
+	color: rgba(210, 0, 0, 0.87);
+	font-size: 1.07rem;
+	font-family: "Poppins", sans-serif;
+	transition: 0.3s ease-in-out;
+	cursor: pointer;
+}
+.unfollowIconColour:hover {
+	transform: scale(1.2);
 }

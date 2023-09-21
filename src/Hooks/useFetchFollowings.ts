@@ -15,10 +15,12 @@ const fetchUserFollowings = async (userID: string) => {
 
 	return data;
 };
-const useFetchFollowings = (userID: string) => {
+const useFetchFollowings = (userID: string, enabled: boolean) => {
 	const { data, isLoading, isError } = useQuery({
 		queryKey: ["PeopleUFollow", userID],
 		queryFn: () => fetchUserFollowings(userID),
+		staleTime: 24 * 60 * 60 * 1000,
+		enabled,
 	});
 
 	return { data, isLoading, isError };

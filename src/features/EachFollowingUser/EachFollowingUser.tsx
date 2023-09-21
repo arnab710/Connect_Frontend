@@ -1,3 +1,4 @@
+import { HiUserRemove } from "react-icons/hi";
 import React from "react";
 import style from "./EachFollowingUser.module.css";
 import { followingUserType } from "../../Types/AfterFetchUserFollowings";
@@ -17,10 +18,13 @@ const EachFollowingUser: React.FC<{ eachPeople: { user: followingUserType; _id: 
 				/>
 			</div>
 			<div className={style.userInfoDiv}>
-				<h1 className={style.userInfoName}>
-					{eachPeople.user.firstName} {eachPeople.user.lastName}
-				</h1>
-				<p className={style.userInfoOccupation}>{eachPeople.user.occupation}</p>
+				<div>
+					<h1 className={style.userInfoName}>
+						{eachPeople.user.firstName} {eachPeople.user.lastName}
+					</h1>
+					<p className={style.userInfoOccupation}>{eachPeople.user.occupation}</p>
+				</div>
+				<HiUserRemove className={style.unfollowIconColour} />
 			</div>
 		</div>
 	);

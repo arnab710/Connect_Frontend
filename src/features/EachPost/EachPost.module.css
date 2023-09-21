@@ -49,14 +49,21 @@
 	color: rgba(0, 0, 0, 0.573);
 }
 .followIcon {
-	color: black;
+	color: #00308f;
 	cursor: pointer;
 	font-size: 1.1rem;
-	transition: 0.2s ease-in-out;
+	transition: 0.3s ease-in-out;
 }
-.followIcon:hover {
-	color: #00308f;
-	transform: scale(1.1);
+.followIcon:hover,
+.unfollowIconColour:hover {
+	transform: scale(1.2);
+}
+.unfollowIconColour {
+	color: rgba(210, 0, 0, 0.87);
+	font-size: 1.1rem;
+	font-family: "Poppins", sans-serif;
+	transition: 0.3s ease-in-out;
+	cursor: pointer;
 }
 .description {
 	/* border: 2px solid red; */

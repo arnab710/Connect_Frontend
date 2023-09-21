@@ -4,15 +4,15 @@ import { sponsorsSlider } from "./RightSponsorSlider";
 import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
 import useFetchFollowings from "../../Hooks/useFetchFollowings";
 import EachFollowingUser from "../EachFollowingUser/EachFollowingUser";
-import toast from "react-hot-toast";
-import { styleObj } from "../../components/notifications/errorStyle";
+import SmallBtnSpinner from "../SmallBtnSpinner/SmallBtnSpinner";
 
 const RightSponsors: React.FC = () => {
 	const [currentPictureIndex, setCurrentPictureIndex] = useState<number>(0);
 
+	const [followingsFetchEnabler, setFollowingFetchEnabler] = useState(false);
 	const userID = useAppSelector((state) => state.user._id);
 
-	const { data: followingsArray, isLoading, isError: isFollowingArrayError } = useFetchFollowings(userID);
+	const { data: followingsArray, isLoading } = useFetchFollowings(userID, followingsFetchEnabler);
 
 	useEffect(() => {
 		const intervalID = setInterval(() => {
@@ -22,13 +22,9 @@ const RightSponsors: React.FC = () => {
 	}, []);
 
 	useEffect(() => {
-		if (isFollowingArrayError)
-			toast.error("Somethig Went wrong while getting your following details", {
-				style: styleObj,
-			});
-	});
+		if (userID) setFollowingFetchEnabler(true);
+	}, [userID, setFollowingFetchEnabler]);
 
-	console.log(isLoading);
 	return (
 		<div className={style.backgroundDiv}>
 			<div className={style.sponsorsDiv}>
@@ -52,9 +48,13 @@ const RightSponsors: React.FC = () => {
 			<div className={style.followingListDiv}>
 				<h1 className={style.followHead}>The People You Follow</h1>
 				<div className={style.followingDiv}>
-					{followingsArray?.followers.map((eachPeople, _id) => (
-						<EachFollowingUser key={_id} eachPeople={eachPeople} />
-					))}
+					{isLoading ? (
+						<p className={style.spinnerPara}>
+							<SmallBtnSpinner height={2} width={2} />
+						</p>
+					) : (
+						followingsArray?.followers.map((eachPeople, _id) => <EachFollowingUser key={_id} eachPeople={eachPeople} />)
+					)}
 				</div>
 			</div>
 		</div>
