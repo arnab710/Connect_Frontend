@@ -36,6 +36,13 @@
 	color: rgba(0, 0, 0, 0.604);
 	font-family: "Poppins", sans-serif;
 }
+.unFollowBtn {
+	outline: none;
+	border: none;
+	display: flex;
+	align-items: center;
+	background-color: white;
+}
 .unfollowIconColour {
 	color: rgba(210, 0, 0, 0.87);
 	font-size: 1.07rem;

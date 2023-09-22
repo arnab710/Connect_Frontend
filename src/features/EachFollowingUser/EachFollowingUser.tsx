@@ -2,8 +2,11 @@ import { HiUserRemove } from "react-icons/hi";
 import React from "react";
 import style from "./EachFollowingUser.module.css";
 import { followingUserType } from "../../Types/AfterFetchUserFollowings";
+import useUnfollow from "../../Hooks/useUnfollow";
 
 const EachFollowingUser: React.FC<{ eachPeople: { user: followingUserType; _id: string } }> = ({ eachPeople }) => {
+	const { mutate: unfollow, isLoading } = useUnfollow(eachPeople.user._id, eachPeople.user.firstName);
+
 	return (
 		<div className={style.eachPeopleBackgroundDiv}>
 			<div className={style.imgDiv}>
@@ -24,7 +27,9 @@ const EachFollowingUser: React.FC<{ eachPeople: { user: followingUserType; _id: 
 					</h1>
 					<p className={style.userInfoOccupation}>{eachPeople.user.occupation}</p>
 				</div>
-				<HiUserRemove className={style.unfollowIconColour} />
+				<button className={style.unFollowBtn} onClick={() => unfollow()} disabled={isLoading}>
+					<HiUserRemove className={style.unfollowIconColour} />
+				</button>
 			</div>
 		</div>
 	);

@@ -70,6 +70,10 @@
 	overflow-y: auto;
 	background-color: #fff;
 }
+.followingDivHeight {
+	height: max-content;
+	overflow-y: none;
+}
 .followHead {
 	font-size: 1rem;
 	font-family: "Poppins", sans-serif;
