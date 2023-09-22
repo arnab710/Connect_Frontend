@@ -28,7 +28,7 @@ const App: React.FC = () => {
 				gutter={20}
 				containerStyle={{ margin: "10px" }}
 				toastOptions={{
-					success: { duration: 1500 },
+					success: { duration: 2000 },
 					error: { duration: 3000 },
 				}}
 			/>

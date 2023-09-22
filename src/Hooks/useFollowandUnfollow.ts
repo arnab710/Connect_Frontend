@@ -25,7 +25,7 @@ const followFxn = async (userID: string, action: "follow" | "unfollow") => {
 	return data;
 };
 
-const useFollowandUnfollow = (userID: string, userName: string, action: "follow" | "unfollow") => {
+const useFollowandUnfollow = (userID: string, userName: string, action: "follow" | "unfollow", closeModalfxn?: React.Dispatch<React.SetStateAction<boolean>>) => {
 	const dispatch = useAppDispatch();
 	const userData = useAppSelector((state) => state.user);
 	const queryClient = useQueryClient();
@@ -47,6 +47,7 @@ const useFollowandUnfollow = (userID: string, userName: string, action: "follow"
 			toast.success(`${action === "follow" ? `You are Now Following ${userName}` : `You Have Unfollowed ${userName}`}`, {
 				style: styleObj,
 			});
+			if (closeModalfxn) closeModalfxn((c) => !c);
 		},
 	});
 

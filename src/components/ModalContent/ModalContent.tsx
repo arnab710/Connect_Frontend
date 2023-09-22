@@ -25,7 +25,7 @@ const ModalContent: React.FC<{
 					<button className={style.deleteBtn2} onClick={() => mutateFxn()} disabled={isLoading}>
 						{isLoading ? (
 							<p>
-								<SmallBtnSpinner height={1.2} width={1.2} />
+								<SmallBtnSpinner height={1.3} width={1.3} />
 							</p>
 						) : (
 							`${button}`

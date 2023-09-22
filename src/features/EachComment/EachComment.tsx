@@ -12,7 +12,7 @@ const EachComment: React.FC<{ eachComment: eachCommentType; setCountComment: Rea
 	const [openModal, setOpenModal] = useState<boolean>(false);
 
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-	const decodedText = he.decode(eachComment.comment) as string;
+	const decodedText = he.decode(eachComment.comment);
 
 	const { mutate: deleteComment, isLoading } = useDeleteComment(eachComment._id, setCountComment, postID);
 
