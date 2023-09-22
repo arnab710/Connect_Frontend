@@ -2,10 +2,10 @@ import { HiUserRemove } from "react-icons/hi";
 import React from "react";
 import style from "./EachFollowingUser.module.css";
 import { followingUserType } from "../../Types/AfterFetchUserFollowings";
-import useUnfollow from "../../Hooks/useUnfollow";
+import useFollowandUnfollow from "../../Hooks/useFollowandUnfollow";
 
 const EachFollowingUser: React.FC<{ eachPeople: { user: followingUserType; _id: string } }> = ({ eachPeople }) => {
-	const { mutate: unfollow, isLoading } = useUnfollow(eachPeople.user._id, eachPeople.user.firstName);
+	const { mutate: unfollow, isLoading } = useFollowandUnfollow(eachPeople.user._id, eachPeople.user.firstName, "unfollow");
 
 	return (
 		<div className={style.eachPeopleBackgroundDiv}>

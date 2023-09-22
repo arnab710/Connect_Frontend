@@ -6,8 +6,8 @@ import { styleObj } from "../components/notifications/errorStyle";
 import { updateUserFollowings } from "../Redux/Slices/userInfoSlice";
 import { useAppDispatch, useAppSelector } from "../Redux/ReduxAppType/AppType";
 
-const followFxn = async (userID: string) => {
-	const API: string = `${import.meta.env.VITE_BACKEND_APP_PORT}/${import.meta.env.VITE_BACKEND_APP_API}/users/unfollow`;
+const followFxn = async (userID: string, action: "follow" | "unfollow") => {
+	const API: string = `${import.meta.env.VITE_BACKEND_APP_PORT}/${import.meta.env.VITE_BACKEND_APP_API}/users/${action === "follow" ? `follow` : `unfollow`}`;
 
 	const response: Response = await fetch(API, {
 		method: "POST",
@@ -25,26 +25,26 @@ const followFxn = async (userID: string) => {
 	return data;
 };
 
-const useUnfollow = (userID: string, userName: string) => {
+const useFollowandUnfollow = (userID: string, userName: string, action: "follow" | "unfollow") => {
 	const dispatch = useAppDispatch();
 	const userData = useAppSelector((state) => state.user);
 	const queryClient = useQueryClient();
 
 	const { mutate, isLoading, isError } = useMutation({
-		mutationFn: () => followFxn(userID),
+		mutationFn: () => followFxn(userID, action),
 		onError: (err: Error) => {
 			toast.error(err.message, {
 				style: styleObj,
 			});
 		},
 		onSuccess: () => {
-			const followingData = userData.followings.filter((data) => data.user !== userID);
-			dispatch(updateUserFollowings(followingData));
+			const newFollowings = [...userData.followings, { user: userID }];
+			dispatch(updateUserFollowings(newFollowings));
 
 			void queryClient.invalidateQueries({ queryKey: ["userInfo"] });
 			void queryClient.invalidateQueries(["PeopleUFollow", userData._id]);
 
-			toast.success(`You Have Unfollowed ${userName}`, {
+			toast.success(`${action === "follow" ? `You are Now Following ${userName}` : `You Have Unfollowed ${userName}`}`, {
 				style: styleObj,
 			});
 		},
@@ -53,4 +53,4 @@ const useUnfollow = (userID: string, userName: string) => {
 	return { mutate, isLoading, isError };
 };
 
-export default useUnfollow;
+export default useFollowandUnfollow;
