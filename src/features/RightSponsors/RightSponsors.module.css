@@ -1,7 +1,7 @@
 .backgroundDiv {
 	width: 23%;
 	position: sticky;
-	top: 15px;
+	top: 5px;
 	height: fit-content;
 }
 .sponsorsDiv {
@@ -65,14 +65,16 @@
 }
 .followingListDiv {
 	margin-top: 20px;
-	padding: 14px;
+	padding: 14px 14px 0 14px;
 	height: 235px;
 	overflow-y: auto;
 	background-color: #fff;
 }
 .followingDivHeight {
 	height: max-content;
-	overflow-y: none;
+	margin-top: 20px;
+	padding: 14px;
+	background-color: #fff;
 }
 .followHead {
 	font-size: 1rem;

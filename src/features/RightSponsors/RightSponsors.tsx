@@ -47,7 +47,7 @@ const RightSponsors: React.FC = () => {
 				</div>
 				<p className={style.description}>SweetCrafts: Crafting artisanal desserts. Our bakers use the finest ingredients. Every treat is a work of art. Indulge in sweet perfection.</p>
 			</div>
-			<div className={`${style.followingListDiv} ${followingsArray && followingsArray.followings.length < 2 && style.followingDivHeight}`}>
+			<div className={`${(followingsArray && followingsArray.followings.length < 2) || isLoading ? style.followingDivHeight : style.followingListDiv}`}>
 				<h1 className={style.followHead}>The People You Follow</h1>
 				<div className={style.followingDiv}>
 					{isLoading ? (
