@@ -54,3 +54,23 @@
 	font-size: 0.9rem;
 	font-weight: 600;
 }
+@media screen and (max-width: 1318px) {
+	.userInfo {
+		width: 89%;
+	}
+}
+@media screen and (max-width: 494px) {
+	.userInfo {
+		width: 87%;
+	}
+}
+@media screen and (max-width: 422px) {
+	.userInfo {
+		width: 85%;
+	}
+}
+@media screen and (max-width: 344px) {
+	.userInfo {
+		width: 82%;
+	}
+}

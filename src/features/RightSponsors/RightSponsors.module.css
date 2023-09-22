@@ -88,3 +88,26 @@
 .spinnerPara {
 	text-align: center;
 }
+@media screen and (max-width: 1192px) {
+	.backgroundDiv {
+		width: 25%;
+	}
+}
+@media screen and (max-width: 1071px) {
+	.backgroundDiv {
+		width: 35%;
+	}
+}
+@media screen and (max-width: 799px) {
+	.backgroundDiv {
+		display: none;
+		position: initial;
+		height: 0;
+	}
+}
+
+@media screen and (max-height: 715px) {
+	.followingListDiv {
+		height: 200px;
+	}
+}

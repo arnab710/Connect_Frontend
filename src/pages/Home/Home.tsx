@@ -20,7 +20,6 @@ const Home: React.FC = () => {
 				<MiddlePostFeed />
 				<RightSponsors />
 			</section>
-			<div style={{ height: `200vh` }}></div>
 		</div>
 	);
 };

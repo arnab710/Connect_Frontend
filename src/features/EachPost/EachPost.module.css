@@ -158,3 +158,81 @@
 .totalCommentDiv {
 	margin-top: 15px;
 }
+@media screen and (max-width: 1293px) {
+	.userInfoDiv {
+		width: 85%;
+	}
+}
+@media screen and (max-width: 1071px) {
+	.backgroundDiv {
+		margin: 40px 0 0 0;
+	}
+}
+@media screen and (max-width: 799px) {
+	.backgroundDiv {
+		width: 100%;
+		padding: 30px;
+	}
+}
+@media screen and (max-width: 537px) {
+	.backgroundDiv {
+		padding: 20px;
+	}
+}
+@media screen and (max-width: 519px) {
+	.userInfoDiv {
+		width: 83%;
+	}
+}
+@media screen and (max-width: 450px) {
+	.description {
+		font-size: 0.8rem;
+	}
+	.userInfoDiv {
+		width: 80%;
+	}
+}
+@media screen and (max-width: 413px) {
+	.backgroundDiv {
+		padding: 10px;
+	}
+	.CountDiv {
+		gap: 7px;
+	}
+}
+@media screen and (max-width: 395px) {
+	.profilePictureDiv {
+		width: 45px;
+		height: 45px;
+		border-radius: 50%;
+	}
+	.userInfoDiv {
+		width: 83%;
+	}
+	.userName {
+		font-size: 1rem;
+	}
+	.reactText {
+		font-size: 1rem;
+	}
+}
+@media screen and (max-width: 330px) {
+	.userInfoDiv {
+		width: 80%;
+	}
+	.userName {
+		font-size: 0.9rem;
+	}
+	.reactText {
+		font-size: 0.9rem;
+	}
+	.reactIcons {
+		font-size: 1.5rem;
+	}
+	.reactIconsWithRed {
+		font-size: 1.5rem;
+	}
+	.reactIcons2 {
+		font-size: 1.7rem;
+	}
+}

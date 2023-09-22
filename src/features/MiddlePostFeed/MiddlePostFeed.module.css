@@ -1,3 +1,18 @@
 .MiddlePostFeedBackground {
 	width: 50%;
 }
+@media screen and (max-width: 1071px) {
+	.MiddlePostFeedBackground {
+		width: 65%;
+	}
+}
+@media screen and (max-width: 815px) {
+	.MiddlePostFeedBackground {
+		width: 70%;
+	}
+}
+@media screen and (max-width: 799px) {
+	.MiddlePostFeedBackground {
+		width: 100%;
+	}
+}

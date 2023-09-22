@@ -14,7 +14,7 @@
 	width: 100%;
 }
 .commentInputAndPostDiv {
-	width: 91%;
+	width: 90%;
 }
 .commentInputDiv {
 	background-color: rgb(245, 245, 245);
@@ -67,4 +67,19 @@
 	border-radius: 25px;
 	color: white;
 	font-size: 1rem;
+}
+@media screen and (max-width: 502px) {
+	.commentInputAndPostDiv {
+		width: 87%;
+	}
+}
+@media screen and (max-width: 369px) {
+	.commentInputAndPostDiv {
+		width: 85%;
+	}
+}
+@media screen and (max-width: 315px) {
+	.commentInputAndPostDiv {
+		width: 83%;
+	}
 }

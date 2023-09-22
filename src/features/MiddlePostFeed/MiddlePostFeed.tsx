@@ -24,7 +24,7 @@ const MiddlePostFeed: React.FC = () => {
 			{data?.pages.map((eachPage) => eachPage?.UpdatedPosts?.map((post) => <EachPost post={post} key={post._id} />))}
 			{(isLoading || isFetchingNextPage) && <EachPostSkeleton />}
 
-			<div ref={endRef}></div>
+			<div ref={endRef} style={{ height: `1px` }}></div>
 		</div>
 	);
 };

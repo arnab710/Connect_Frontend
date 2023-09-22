@@ -53,3 +53,8 @@
 .unfollowIconColour:hover {
 	transform: scale(1.2);
 }
+@media screen and (max-width: 1325px) {
+	.userInfoDiv {
+		width: 80%;
+	}
+}
