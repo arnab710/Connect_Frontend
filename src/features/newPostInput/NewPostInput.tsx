@@ -1,27 +1,62 @@
 import { BiImage, BiVideoPlus } from "react-icons/bi";
-import { AiOutlineAudio } from "react-icons/ai";
+import { AiOutlineAudio, AiOutlineWarning } from "react-icons/ai";
 import React, { useState } from "react";
 import style from "./NewPostInput.module.css";
 import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
 import useUploadContent from "../../Hooks/useUploadContent";
+import toast from "react-hot-toast";
+import { styleObj } from "../../components/notifications/errorStyle";
+import { HiXMark } from "react-icons/hi2";
+import styled from "styled-components";
+import SmallBtnSpinner from "../SmallBtnSpinner/SmallBtnSpinner";
+
+const Button = styled.button`
+	background: none;
+	border: none;
+	padding: 0.1rem;
+	border-radius: 5px;
+	transform: translateX(0.8rem);
+	transition: all 0.2s;
+	position: absolute;
+	top: 1px;
+	right: 1rem;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #f3f4f6;
+	}
+
+	& svg {
+		width: 1.3rem;
+		height: 1.3rem;
+		/* Sometimes we need both */
+		/* fill: var(--color-grey-500);
+    stroke: var(--color-grey-500); */
+		color: #6b7280;
+	}
+`;
 
 const NewPostInput: React.FC = () => {
-	const [inputType, setInputType] = useState<"image" | "audio" | "video" | null>(null);
 	const [fileInfo, setFileInfo] = useState<File | null>(null);
-	const User = useAppSelector((state) => state.user);
 	const [inputDescription, setInputDescription] = useState<string>("");
+	const User = useAppSelector((state) => state.user);
 
-	const { mutate: post, isLoading } = useUploadContent(inputDescription, setFileInfo, setInputType);
+	const { mutate: post, isLoading } = useUploadContent(inputDescription, setFileInfo, setInputDescription);
 
 	const handleUploadChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (!e.target.files) return setFileInfo(null);
-		return setFileInfo(e.target.files[0]);
+		setFileInfo(e.target.files[0]);
+
+		e.target.value = "";
 	};
 
-	console.log(isLoading);
 	const handlePost = () => {
-		if (!fileInfo || !inputType) return null;
-		post({ fileInfo, inputType });
+		if (!fileInfo)
+			toast.error("No File Selected", {
+				style: styleObj,
+			});
+		if (!fileInfo) return null;
+		post({ fileInfo });
 	};
 
 	return (
@@ -38,22 +73,62 @@ const NewPostInput: React.FC = () => {
 					<input placeholder="What's on your mind...." value={inputDescription} onChange={(e) => setInputDescription(e.target.value)} className={style.descriptionInput} />
 				</div>
 			</div>
-			{inputType && <input type="file" accept={`${inputType}/*`} onChange={handleUploadChange} />}
+			{fileInfo && (
+				<div className={style.fileInputDiv}>
+					{isLoading ? (
+						<div className={style.warningDiv}>
+							<AiOutlineWarning className={style.warningIcon} />
+							<p className={style.uploadWarning}>
+								Upload times may be longer than usual as this platform is primarily designed for portfolio showcase purposes and operates within limited storage resources 😥.Thank you for your
+								understanding and patience.
+							</p>
+						</div>
+					) : (
+						<>
+							<p>{fileInfo.name}</p>
+							<Button onClick={() => setFileInfo(null)}>
+								<HiXMark />
+							</Button>
+						</>
+					)}
+				</div>
+			)}
 			<div className={style.variousInputDiv}>
-				<button className={style.inputBtn} onClick={() => setInputType("image")}>
-					<BiImage className={style.icon} />
-					<span className={style.iconText}>Image</span>
-				</button>
-				<button className={style.inputBtn} onClick={() => setInputType("video")}>
-					<BiVideoPlus className={style.icon} />
-					<span className={style.iconText}>Clip</span>
-				</button>
-				<button className={style.inputBtn} onClick={() => setInputType("audio")}>
-					<AiOutlineAudio className={style.icon} />
-					<span className={style.iconText}>Audio</span>
-				</button>
-				<button className={style.postBtn} onClick={handlePost}>
-					POST
+				<div className={style.inputFileWhole}>
+					<input type="file" accept="image/*" id="image-upload" onChange={handleUploadChange} className={style.hiddenInput} />
+					<label htmlFor="image-upload">
+						<span className={style.inputSpan}>
+							<BiImage className={style.icon} />
+							<span className={style.iconText}>Image</span>
+						</span>
+					</label>
+				</div>
+				<div className={style.inputFileWhole}>
+					<input type="file" accept="video/mp4" id="video-upload" className={style.hiddenInput} onChange={handleUploadChange} />
+					<label htmlFor="video-upload">
+						<span className={style.inputSpan}>
+							<BiVideoPlus className={style.icon} />
+							<span className={style.iconText}>Clip</span>
+						</span>
+					</label>
+				</div>
+				<div className={style.inputFileWhole}>
+					<input type="file" accept="audio/mp3" id="audio-upload" className={style.hiddenInput} onChange={handleUploadChange} />
+					<label htmlFor="audio-upload">
+						<span className={style.inputSpan}>
+							<AiOutlineAudio className={style.icon} />
+							<span className={style.iconText}>Audio</span>
+						</span>
+					</label>
+				</div>
+				<button className={style.postBtn} onClick={handlePost} disabled={isLoading}>
+					{isLoading ? (
+						<p className={style.spinnerPara}>
+							<SmallBtnSpinner height={1} width={1} />
+						</p>
+					) : (
+						`POST`
+					)}
 				</button>
 			</div>
 		</section>

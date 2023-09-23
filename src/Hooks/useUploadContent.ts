@@ -3,12 +3,12 @@ import { APIFail } from "../Types/APIFailResponseTypes";
 import toast from "react-hot-toast";
 import { styleObj } from "../components/notifications/errorStyle";
 
-const uploadPost = async (file: File, inputDescription: string, inputType: "image" | "audio" | "video") => {
+const uploadPost = async (file: File, inputDescription: string) => {
 	const formData = new FormData();
 	formData.append("file", file);
 	formData.append("description", inputDescription);
-	if (inputType === "image") formData.append("fileType", "image-post");
-	else formData.append("fileType", inputType);
+	if (file.type.startsWith("image")) formData.append("fileType", "image-post");
+	else formData.append("fileType", file.type.split("/")[0]);
 
 	const API = `${import.meta.env.VITE_BACKEND_APP_PORT}/${import.meta.env.VITE_BACKEND_APP_API}/posts/new`;
 
@@ -24,29 +24,25 @@ const uploadPost = async (file: File, inputDescription: string, inputType: "imag
 	return data;
 };
 
-const useUploadContent = (
-	inputDescription: string,
-	setFileInfo: React.Dispatch<React.SetStateAction<File | null>>,
-	setInputType: React.Dispatch<React.SetStateAction<"image" | "audio" | "video" | null>>
-) => {
+const useUploadContent = (inputDescription: string, setFileInfo: React.Dispatch<React.SetStateAction<File | null>>, setInputDescription: React.Dispatch<React.SetStateAction<string>>) => {
 	const queryClient = useQueryClient();
 
 	const { mutate, isLoading, isError } = useMutation({
-		mutationFn: ({ fileInfo, inputType }: { fileInfo: File; inputType: "audio" | "video" | "image" }) => uploadPost(fileInfo, inputDescription, inputType),
+		mutationFn: ({ fileInfo }: { fileInfo: File }) => uploadPost(fileInfo, inputDescription),
 		onSuccess: () => {
 			void queryClient.invalidateQueries({ queryKey: ["InfinitePosts"] });
 			setFileInfo(null);
-			setInputType(null);
 			toast.success("Your Post Uploaded Successfully", {
 				style: styleObj,
 			});
+			setInputDescription("");
 		},
 		onError: (err: Error) => {
 			setFileInfo(null);
-			setInputType(null);
 			toast.error(err.message, {
 				style: styleObj,
 			});
+			setInputDescription("");
 		},
 	});
 	return { mutate, isLoading, isError };

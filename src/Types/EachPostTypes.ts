@@ -4,6 +4,7 @@ interface PostType {
 	description: string;
 	picture?: string;
 	video?: string;
+	audio?: string;
 	likes: number;
 	comments: number;
 	createdAt: string;

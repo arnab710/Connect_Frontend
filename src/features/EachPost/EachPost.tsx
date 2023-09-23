@@ -129,6 +129,11 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 						<source src={post?.video} type="video/mp4" />
 					</video>
 				)}
+				{post?.audio && (
+					<audio controls className={style.audioPost}>
+						<source src={post.audio} type="audio/mp3" />
+					</audio>
+				)}
 			</section>
 			<section className={style.LikeAndCommentCount}>
 				<div className={style.CountDiv}>
