@@ -87,7 +87,5 @@
 @media screen and (max-width: 1071px) {
 	.backgroundDiv {
 		display: none;
-		position: initial;
-		height: 0;
 	}
 }

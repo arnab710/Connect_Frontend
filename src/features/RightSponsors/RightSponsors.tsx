@@ -14,8 +14,6 @@ const RightSponsors: React.FC = () => {
 
 	const { data: followingsArray, isLoading } = useFetchFollowings(userID, followingsFetchEnabler);
 
-	console.log(followingsArray);
-
 	useEffect(() => {
 		const intervalID = setInterval(() => {
 			setCurrentPictureIndex((curr) => (curr + 1) % sponsorsSlider.length);

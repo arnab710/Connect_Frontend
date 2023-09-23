@@ -1,0 +1,89 @@
+.userDescriptionDiv {
+	background-color: white;
+	width: 95%;
+	margin: auto;
+	padding: 20px;
+}
+.userDescriptionWholeDiv {
+	min-height: 95px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 0.5px solid rgba(0, 0, 0, 0.155);
+}
+.userPictureDiv {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.userImg {
+	width: 100%;
+}
+.descriptionInputDiv {
+	width: 90%;
+	min-height: 50px;
+	padding: 8px 13px 8px 13px;
+	border-radius: 25px;
+	background-color: rgb(245, 245, 245);
+}
+.descriptionInput {
+	width: 100%;
+	min-height: 30px;
+	font-size: 0.8rem;
+	font-family: "Poppins", sans-serif;
+	outline: none;
+	border: none;
+	background: transparent;
+	letter-spacing: 0.03rem;
+}
+.variousInputDiv {
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+	font-family: "Poppins", sans-serif;
+}
+.inputBtn {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	&:hover {
+		color: #004cdb;
+	}
+}
+.icon {
+	font-size: 1.1rem;
+}
+.iconText {
+	font-size: 0.9rem;
+}
+.postBtn {
+	width: 70px;
+	height: 30px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-color: #318ce7;
+	color: white;
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-size: 0.9rem;
+	cursor: pointer;
+	transition: 0.3s;
+	&:hover {
+		background-color: #2366a9;
+	}
+}
+@media screen and (max-width: 1071px) {
+	.userDescriptionDiv {
+		margin: initial;
+	}
+}
+@media screen and (max-width: 799px) {
+	.userDescriptionDiv {
+		width: 100%;
+	}
+}
