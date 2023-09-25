@@ -4,11 +4,11 @@ import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
 import usePostComment from "../../Hooks/usePostComment";
 import SmallBtnSpinner from "../SmallBtnSpinner/SmallBtnSpinner";
 
-const CommentInput: React.FC<{ postID: string; setCountComment: React.Dispatch<React.SetStateAction<number>> }> = ({ postID, setCountComment }) => {
+const CommentInput: React.FC<{ postID: string; setCountComment: React.Dispatch<React.SetStateAction<number>>; userID: string }> = ({ postID, setCountComment, userID }) => {
 	const [input, setInput] = useState<string>("");
 	const userPicture: string = useAppSelector((state) => state.user.profilePicture);
 
-	const { mutate: Comment, isLoading } = usePostComment(postID, input, setCountComment, setInput);
+	const { mutate: Comment, isLoading } = usePostComment(postID, input, setCountComment, setInput, userID);
 
 	const handlePost = () => {
 		Comment();

@@ -23,7 +23,7 @@ const postComment = async (id: string, comment: string) => {
 	return data;
 };
 
-const usePostComment = (id: string, comment: string, setCountComment: React.Dispatch<React.SetStateAction<number>>, setInput: React.Dispatch<React.SetStateAction<string>>) => {
+const usePostComment = (id: string, comment: string, setCountComment: React.Dispatch<React.SetStateAction<number>>, setInput: React.Dispatch<React.SetStateAction<string>>, userID: string) => {
 	const queryClient = useQueryClient();
 
 	const { mutate, isError, isLoading } = useMutation({
@@ -32,6 +32,8 @@ const usePostComment = (id: string, comment: string, setCountComment: React.Disp
 			void queryClient.invalidateQueries({ queryKey: ["topComments", id] });
 			setCountComment((c) => c + 1);
 			setInput("");
+			void queryClient.invalidateQueries({ queryKey: ["InfinitePosts"] });
+			void queryClient.invalidateQueries({ queryKey: ["InfiniteUserPosts", userID] });
 		},
 		onError: (err: Error) => {
 			toast.error(err.message, {

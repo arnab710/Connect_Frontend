@@ -41,7 +41,7 @@ const NewPostInput: React.FC = () => {
 	const [inputDescription, setInputDescription] = useState<string>("");
 	const User = useAppSelector((state) => state.user);
 
-	const { mutate: post, isLoading } = useUploadContent(inputDescription, setFileInfo, setInputDescription);
+	const { mutate: post, isLoading } = useUploadContent(inputDescription, setFileInfo, setInputDescription, User._id);
 
 	const handleUploadChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (!e.target.files) return setFileInfo(null);

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import style from "./MiddlePostFeed.module.css";
 import EachPost from "../EachPost/EachPost";
 import useInfiniteScroll from "../../Hooks/useInfiniteScroll";
@@ -12,13 +12,11 @@ const MiddlePostFeed: React.FC = () => {
 
 	const isEndVisible = useIntersectionObserver(endRef, { threshold: 0 });
 
-	const memoisedData = useMemo(() => data, [data]);
-
 	useEffect(() => {
-		if (isEndVisible && !isFetchingNextPage && memoisedData && memoisedData.pages[memoisedData.pages.length - 1].UpdatedPosts.length > 1) {
+		if (isEndVisible && !isFetchingNextPage && data && data.pages[data.pages.length - 1].UpdatedPosts.length > 1) {
 			void fetchNextPage();
 		}
-	}, [isEndVisible, isFetchingNextPage, fetchNextPage, memoisedData]);
+	}, [isEndVisible, isFetchingNextPage, fetchNextPage, data]);
 
 	return (
 		<div className={style.MiddlePostFeedBackground}>

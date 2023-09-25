@@ -7,14 +7,19 @@ import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
 import useDeleteComment from "../../Hooks/useDeleteComment";
 import ModalContent from "../../components/ModalContent/ModalContent";
 
-const EachComment: React.FC<{ eachComment: eachCommentType; setCountComment: React.Dispatch<React.SetStateAction<number>>; postID: string }> = ({ eachComment, setCountComment, postID }) => {
+const EachComment: React.FC<{ eachComment: eachCommentType; setCountComment: React.Dispatch<React.SetStateAction<number>>; postID: string; user: string }> = ({
+	eachComment,
+	setCountComment,
+	postID,
+	user,
+}) => {
 	const userID = useAppSelector((state) => state.user._id);
 	const [openModal, setOpenModal] = useState<boolean>(false);
 
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
 	const decodedText = he.decode(eachComment.comment);
 
-	const { mutate: deleteComment, isLoading } = useDeleteComment(eachComment._id, setCountComment, postID);
+	const { mutate: deleteComment, isLoading } = useDeleteComment(eachComment._id, setCountComment, postID, user);
 
 	return (
 		<div className={style.overallCommentDiv}>

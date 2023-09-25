@@ -24,13 +24,19 @@ const uploadPost = async (file: File, inputDescription: string) => {
 	return data;
 };
 
-const useUploadContent = (inputDescription: string, setFileInfo: React.Dispatch<React.SetStateAction<File | null>>, setInputDescription: React.Dispatch<React.SetStateAction<string>>) => {
+const useUploadContent = (
+	inputDescription: string,
+	setFileInfo: React.Dispatch<React.SetStateAction<File | null>>,
+	setInputDescription: React.Dispatch<React.SetStateAction<string>>,
+	userID: string
+) => {
 	const queryClient = useQueryClient();
 
 	const { mutate, isLoading, isError } = useMutation({
 		mutationFn: ({ fileInfo }: { fileInfo: File }) => uploadPost(fileInfo, inputDescription),
 		onSuccess: () => {
-			void queryClient.invalidateQueries({ queryKey: ["InfinitePosts"] });
+			void queryClient.refetchQueries({ queryKey: ["InfinitePosts"] });
+			void queryClient.refetchQueries({ queryKey: ["InfiniteUserPosts", userID] });
 			setFileInfo(null);
 			toast.success("Your Post Uploaded Successfully", {
 				style: styleObj,

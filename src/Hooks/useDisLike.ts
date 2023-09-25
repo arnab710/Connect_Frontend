@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { successfulLikeType } from "../Types/AfterLikeTypes";
 import { APIFail } from "../Types/APIFailResponseTypes";
 import toast from "react-hot-toast";
@@ -19,13 +19,19 @@ const dislikeAPost = async ({ id }: { id: string }) => {
 	return data;
 };
 
-const useDisLike = () => {
+const useDisLike = (userID: string) => {
+	const queryClient = useQueryClient();
 	const { mutate, data, isLoading, isError } = useMutation({
 		mutationFn: dislikeAPost,
+
 		onError: (err: Error) => {
 			toast.error(err.message, {
 				style: styleObj,
 			});
+		},
+		onSuccess: () => {
+			void queryClient.invalidateQueries({ queryKey: ["InfinitePosts"] });
+			void queryClient.invalidateQueries({ queryKey: ["InfiniteUserPosts", userID] });
 		},
 	});
 

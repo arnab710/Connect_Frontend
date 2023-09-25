@@ -10,7 +10,6 @@ import { styleObj } from "../../components/notifications/errorStyle";
 import useLike from "../../Hooks/useLike";
 import { likeReducer } from "../../Reducers/PostLikeReducer";
 import { likeType } from "../../Types/likeTypes";
-import { Action } from "../../Types/signupUserType";
 import useDisLike from "../../Hooks/useDisLike";
 import useAllCommentFetch from "../../Hooks/useAllCommentFetch";
 import EachComment from "../EachComment/EachComment";
@@ -35,11 +34,16 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 		likeCount: post.likes,
 	};
 
-	const [likeState, likeDispatch] = useReducer(likeReducer, initialLike) as [likeType, React.Dispatch<Action>];
+	const [likeState, likeDispatch] = useReducer(likeReducer, initialLike);
 	const [countComment, setCountComment] = useState<number>(post.comments);
 
-	const { mutate: likefxn, isError: isLikeError, isLoading: isLikeLoading } = useLike();
-	const { mutate: dislikefxn, isError: isDislikeError, isLoading: isDislikeLoading } = useDisLike();
+	const { mutate: likefxn, isError: isLikeError, isLoading: isLikeLoading } = useLike(post.user._id);
+	const { mutate: dislikefxn, isError: isDislikeError, isLoading: isDislikeLoading } = useDisLike(post.user._id);
+
+	useEffect(() => {
+		likeDispatch({ type: "postChange", payload: { likedByUser: post.alreadyLiked, likeCount: post.likes } });
+		setCountComment(post.comments);
+	}, [post.alreadyLiked, post.likes, post.comments]);
 
 	useEffect(() => {
 		if (isCommentError)
@@ -164,14 +168,14 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 			</section>
 			{enabler && (
 				<>
-					<CommentInput postID={post._id} setCountComment={setCountComment} />
+					<CommentInput postID={post._id} setCountComment={setCountComment} userID={post.user._id} />
 					<section className={style.commentSection}>
 						<h1 className={style.commentHeader}>{countComment > 0 ? `Latest Comments` : `No Comments Yet`}</h1>
 						<div className={style.totalCommentDiv}>
 							{isCommentLoading ? (
 								<TotalCommentSkeleton />
 							) : (
-								commentData?.allComments?.map((eachComment) => <EachComment eachComment={eachComment} key={eachComment._id} setCountComment={setCountComment} postID={post._id} />)
+								commentData?.allComments?.map((eachComment) => <EachComment eachComment={eachComment} key={eachComment._id} setCountComment={setCountComment} postID={post._id} user={post.user._id} />)
 							)}
 						</div>
 					</section>

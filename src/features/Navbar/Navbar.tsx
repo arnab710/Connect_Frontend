@@ -9,6 +9,7 @@ import Icon from "../Icon/Icon";
 import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
 import useLogout from "../../Hooks/useLogout";
 import ModalContent from "../../components/ModalContent/ModalContent";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar: React.FC = () => {
 	const userPicture = useAppSelector((state) => state.user.profilePicture);
@@ -50,22 +51,22 @@ const Navbar: React.FC = () => {
 						<AiFillSetting />
 						<ul className={style.settingIconBar}>
 							<li>
-								<AiOutlineUser className={style.dropdownIcon} />
+								<AiOutlineEdit className={style.dropdownIcon} />
 								<p>Edit Profile</p>
 							</li>
-							<li>
-								<AiOutlineEdit className={style.dropdownIcon} />
+							<Link to="/my-profile">
+								<AiOutlineUser className={style.dropdownIcon} />
 								<p>Your Profile</p>
-							</li>
+							</Link>
 							<li onClick={() => setLogoutPopUp((s) => !s)}>
 								<BiLogOut className={style.dropdownIcon} />
 								<p>Log Out</p>
 							</li>
 						</ul>
 					</li>
-					<li className={style.rightIcon3}>
+					<NavLink to="/my-profile" className={style.rightIcon3}>
 						<BiSolidUser />
-					</li>
+					</NavLink>
 					<li className={style.rightIconReport} onClick={() => setLogoutPopUp((s) => !s)}>
 						<BiLogOut />
 					</li>
@@ -78,10 +79,10 @@ const Navbar: React.FC = () => {
 					>
 						<GiHamburgerMenu className={`${mobileDropDown ? style.colouring : ""}`} />
 						<ul className={style.hamBurgerList} ref={dropDownRef} onClick={(e) => e.stopPropagation()}>
-							<li>
+							<Link to="/my-profile">
 								<AiOutlineUser />
 								<p>Your Profile</p>
-							</li>
+							</Link>
 							<li>
 								<AiOutlineEdit />
 								<p>Edit Profile</p>

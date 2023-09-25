@@ -16,7 +16,7 @@ const DeleteComment = async (id: string) => {
 	if (data.result === "fail") throw new Error(data.message);
 	return data;
 };
-const useDeleteComment = (id: string, setCountComment: React.Dispatch<React.SetStateAction<number>>, postID: string) => {
+const useDeleteComment = (id: string, setCountComment: React.Dispatch<React.SetStateAction<number>>, postID: string, userID: string) => {
 	const queryClient = useQueryClient();
 	const { mutate, isLoading, isError } = useMutation({
 		mutationFn: () => DeleteComment(id),
@@ -26,6 +26,8 @@ const useDeleteComment = (id: string, setCountComment: React.Dispatch<React.SetS
 			toast.success(data.message, {
 				style: styleObj,
 			});
+			void queryClient.invalidateQueries({ queryKey: ["InfinitePosts"] });
+			void queryClient.invalidateQueries({ queryKey: ["InfiniteUserPosts", userID] });
 		},
 		onError: (err: Error) => {
 			toast.error(err.message, {

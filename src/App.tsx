@@ -7,6 +7,7 @@ import Signup from "./pages/Signup/Signup";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
+import MyProfile from "./pages/MyProfile/MyProfile";
 
 const App: React.FC = () => {
 	const queryClient = new QueryClient();
@@ -18,6 +19,7 @@ const App: React.FC = () => {
 				<Routes>
 					<Route path="/" element={<ProtectedLayout />}>
 						<Route index element={<Home />} />
+						<Route path="/my-profile" element={<MyProfile />} />
 					</Route>
 					<Route path="/login" element={<Login />} />
 					<Route path="/signup" element={<Signup />} />

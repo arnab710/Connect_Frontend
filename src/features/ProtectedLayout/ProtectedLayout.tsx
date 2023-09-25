@@ -27,7 +27,7 @@ const ProtectedLayout = () => {
 		}
 	}, [data, navigate, userID, dispatch, isError]);
 
-	return <>{isLoading && !userID ? <Loader /> : <Outlet />}</>;
+	return <>{userID && (isLoading ? <Loader /> : <Outlet />)}</>;
 };
 
 export default ProtectedLayout;
