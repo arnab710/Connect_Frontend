@@ -61,7 +61,6 @@ const MyProfile: React.FC = () => {
 
 						<RightSponsors />
 					</div>
-					<div style={{ height: `300vh` }}></div>
 				</div>
 			)}
 		</>
