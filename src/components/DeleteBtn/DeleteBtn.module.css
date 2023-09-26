@@ -1,0 +1,17 @@
+.delBtn {
+	outline: none;
+	border: none;
+	background-color: white;
+	display: flex;
+	align-items: center;
+}
+.delBtn:hover {
+	transform: scale(1.2);
+}
+.deleteIcon {
+	color: rgba(210, 0, 0, 0.87);
+	font-size: 1rem;
+	font-family: "Poppins", sans-serif;
+	transition: 0.3s ease-in-out;
+	cursor: pointer;
+}

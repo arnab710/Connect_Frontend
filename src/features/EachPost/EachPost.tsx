@@ -18,6 +18,7 @@ import CommentInput from "../CommentInput/CommentInput";
 import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
 import FollowUnfollowBtn from "../../components/PostFollowUnfollowBtn/FollowUnfollowBtn";
 import { useNavigate } from "react-router-dom";
+import DeleteBtn from "../../components/DeleteBtn/DeleteBtn";
 
 const EachPost: React.FC<PostPropType> = ({ post }) => {
 	const [enabler, setEnabler] = useState(false);
@@ -124,7 +125,7 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 						</p>
 						<p className={style.userLocation}>{getProperDate(post?.createdAt)}</p>
 					</div>
-					{userDetails._id !== post.user._id && <FollowUnfollowBtn postUser={post.user._id} postUserName={post.user.firstName} />}
+					{userDetails._id !== post.user._id ? <FollowUnfollowBtn postUser={post.user._id} postUserName={post.user.firstName} /> : <DeleteBtn postID={post._id} />}
 				</div>
 			</div>
 			<section className={style.description}>{post?.description}</section>

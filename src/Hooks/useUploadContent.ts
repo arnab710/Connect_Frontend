@@ -37,6 +37,7 @@ const useUploadContent = (
 		onSuccess: () => {
 			void queryClient.refetchQueries({ queryKey: ["InfinitePosts"] });
 			void queryClient.refetchQueries({ queryKey: ["InfiniteUserPosts", userID] });
+			void queryClient.invalidateQueries({ queryKey: ["singleUserInfo", userID] });
 			setFileInfo(null);
 			toast.success("Your Post Uploaded Successfully", {
 				style: styleObj,
