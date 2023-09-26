@@ -1,3 +1,4 @@
+import { FiEdit2 } from "react-icons/fi";
 import { FaUserTie } from "react-icons/fa";
 import React, { useEffect } from "react";
 import style from "./EachProfile.module.css";
@@ -55,6 +56,9 @@ const EachProfile: React.FC = () => {
 											}
 											alt="user's profile picture"
 										/>
+									</div>
+									<div className={style.coverPhotoEditDiv}>
+										<FiEdit2 />
 									</div>
 								</div>
 								<div className={style.userInfoNameDiv}>
