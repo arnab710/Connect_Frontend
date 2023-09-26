@@ -38,13 +38,14 @@ const useFollowandUnfollow = (userID: string, userName: string, action: "follow"
 			});
 		},
 		onSuccess: () => {
-			const newFollowings = [...userData.followings, { user: userID }];
+			const newFollowings = action === "follow" ? [...userData.followings, { user: userID }] : userData.followings.filter((val) => val.user !== userID);
 			dispatch(updateUserFollowings(newFollowings));
 
 			void queryClient.invalidateQueries({ queryKey: ["userInfo"] });
 			void queryClient.invalidateQueries(["PeopleUFollow", userData._id]);
 			void queryClient.invalidateQueries(["singleUserInfo", userID]);
 			void queryClient.invalidateQueries(["singleUserInfo", visitedProfileID]);
+
 			toast.success(`${action === "follow" ? `You are Now Following ${userName}` : `You Have Unfollowed ${userName}`}`, {
 				style: styleObj,
 			});
