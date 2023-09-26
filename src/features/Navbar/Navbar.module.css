@@ -177,7 +177,6 @@
 .redLogOut:hover {
 	color: rgb(128, 2, 2) !important;
 }
-
 @media screen and (max-width: 1066px) {
 	.navBarLeftDiv {
 		margin-left: 20px;

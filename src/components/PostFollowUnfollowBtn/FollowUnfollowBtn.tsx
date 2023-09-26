@@ -12,8 +12,8 @@ const FollowUnfollowBtn: React.FC<{ postUser: string; postUserName: string }> = 
 
 	const [isUnfollowPopUp, setIsUnfollowPopUp] = useState(false);
 
-	const { mutate: follow, isLoading: isFollowLoading } = useFollowandUnfollow(postUser, postUserName, "follow");
-	const { mutate: unfollow, isLoading: isUnfollowLoading } = useFollowandUnfollow(postUser, postUserName, "unfollow", setIsUnfollowPopUp);
+	const { mutate: follow, isLoading: isFollowLoading } = useFollowandUnfollow(postUser, postUserName, "follow", userDetails._id);
+	const { mutate: unfollow, isLoading: isUnfollowLoading } = useFollowandUnfollow(postUser, postUserName, "unfollow", userDetails._id, setIsUnfollowPopUp);
 
 	return (
 		<>

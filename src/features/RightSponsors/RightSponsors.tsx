@@ -6,13 +6,13 @@ import useFetchFollowings from "../../Hooks/useFetchFollowings";
 import EachFollowingUser from "../EachFollowingUser/EachFollowingUser";
 import SmallBtnSpinner from "../SmallBtnSpinner/SmallBtnSpinner";
 
-const RightSponsors: React.FC = () => {
+const RightSponsors: React.FC<{ visitedProfileID: string; visitedProfileFirstName: string }> = ({ visitedProfileID, visitedProfileFirstName }) => {
 	const [currentPictureIndex, setCurrentPictureIndex] = useState<number>(0);
 
 	const [followingsFetchEnabler, setFollowingFetchEnabler] = useState(false);
-	const userID = useAppSelector((state) => state.user._id);
+	const user = useAppSelector((state) => state.user);
 
-	const { data: followingsArray, isLoading } = useFetchFollowings(userID, followingsFetchEnabler);
+	const { data: followingsArray, isLoading } = useFetchFollowings(visitedProfileID, followingsFetchEnabler);
 
 	useEffect(() => {
 		const intervalID = setInterval(() => {
@@ -22,8 +22,8 @@ const RightSponsors: React.FC = () => {
 	}, []);
 
 	useEffect(() => {
-		if (userID) setFollowingFetchEnabler(true);
-	}, [userID, setFollowingFetchEnabler]);
+		if (user._id) setFollowingFetchEnabler(true);
+	}, [user._id, setFollowingFetchEnabler]);
 
 	return (
 		<div className={style.backgroundDiv}>
@@ -46,7 +46,7 @@ const RightSponsors: React.FC = () => {
 				<p className={style.description}>SweetCrafts: Crafting artisanal desserts. Our bakers use the finest ingredients. Every treat is a work of art. Indulge in sweet perfection.</p>
 			</div>
 			<div className={`${(followingsArray && followingsArray.followings.length < 2) || isLoading ? style.followingDivHeight : style.followingListDiv}`}>
-				<h1 className={style.followHead}>The People You Follow</h1>
+				{<h1 className={style.followHead}>{visitedProfileID === user._id ? `The People You Follow` : `The People ${visitedProfileFirstName} Follows`}</h1>}
 				<div className={style.followingDiv}>
 					{isLoading ? (
 						<p className={style.spinnerPara}>

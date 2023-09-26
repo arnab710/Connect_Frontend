@@ -4,11 +4,13 @@ import style from "./EachFollowingUser.module.css";
 import { followingUserType } from "../../Types/AfterFetchUserFollowings";
 import useFollowandUnfollow from "../../Hooks/useFollowandUnfollow";
 import ModalContent from "../../components/ModalContent/ModalContent";
+import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
 
 const EachFollowingUser: React.FC<{ eachPeople: { user: followingUserType; _id: string } }> = ({ eachPeople }) => {
 	const [isOpenModal, setIsOpenModal] = useState(false);
+	const userID = useAppSelector((state) => state.user._id);
 
-	const { mutate: unfollow, isLoading } = useFollowandUnfollow(eachPeople.user._id, eachPeople.user.firstName, "unfollow");
+	const { mutate: unfollow, isLoading } = useFollowandUnfollow(eachPeople.user._id, eachPeople.user.firstName, "unfollow", userID);
 
 	return (
 		<>

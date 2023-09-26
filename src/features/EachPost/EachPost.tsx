@@ -17,9 +17,12 @@ import TotalCommentSkeleton from "../totalCommentSkeleton/totalCommentSkeleton";
 import CommentInput from "../CommentInput/CommentInput";
 import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
 import FollowUnfollowBtn from "../../components/PostFollowUnfollowBtn/FollowUnfollowBtn";
+import { useNavigate } from "react-router-dom";
 
 const EachPost: React.FC<PostPropType> = ({ post }) => {
 	const [enabler, setEnabler] = useState(false);
+
+	const Navigate = useNavigate();
 
 	const userDetails = useAppSelector((state) => state.user);
 
@@ -101,7 +104,7 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 	return (
 		<div className={style.backgroundDiv}>
 			<div className={style.postProfileInfo}>
-				<div className={style.profilePictureDiv}>
+				<div className={style.profilePictureDiv} onClick={() => Navigate(`/profile/${post.user._id}`)}>
 					{
 						<img
 							src={
@@ -116,7 +119,7 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 				</div>
 				<div className={style.userInfoDiv}>
 					<div>
-						<p className={style.userName}>
+						<p className={style.userName} onClick={() => Navigate(`/profile/${post.user._id}`)}>
 							{post?.user?.firstName} {post?.user?.lastName}
 						</p>
 						<p className={style.userLocation}>{getProperDate(post?.createdAt)}</p>

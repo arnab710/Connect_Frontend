@@ -1,18 +1,37 @@
 import { FaUserTie } from "react-icons/fa";
-import React from "react";
-import style from "./MyProfile.module.css";
+import React, { useEffect } from "react";
+import style from "./EachProfile.module.css";
 import Navbar from "../../features/Navbar/Navbar";
 import Loader from "../../features/ScreenLoader/Loader";
 import useFetchUserInfo from "../../Hooks/useFetchUserInfo";
-import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
 import SingleUserPosts from "../../features/SingleUserPosts/SingleUserPosts";
 import LeftUserInfo from "../../features/LeftSideUserInfo/LeftUserInfo";
 import RightSponsors from "../../features/RightSponsors/RightSponsors";
+import { useLocation, useParams } from "react-router-dom";
+import { userInfoFetch } from "../../Types/userInfoFetchType";
 
-const MyProfile: React.FC = () => {
-	const userID = useAppSelector((state) => state.user._id);
+const EachProfile: React.FC = () => {
+	const visitedProfileID = useParams().userID as string;
 
-	const { data, isLoading } = useFetchUserInfo(userID);
+	const location = useLocation();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [location.pathname]);
+
+	const { data, isLoading } = useFetchUserInfo(visitedProfileID) as { data: userInfoFetch; isLoading: boolean };
+
+	const visitedUser = {
+		_id: data?.userData._id,
+		firstName: data?.userData.firstName,
+		lastName: data?.userData.lastName,
+		occupation: data?.userData.occupation,
+		city: data?.userData.city,
+		country: data?.userData.country,
+		bio: data?.userData.bio,
+		profilePicture: data?.userData.profilePicture,
+		followers: data?.userData.followers,
+	};
 	return (
 		<>
 			{isLoading ? (
@@ -21,13 +40,21 @@ const MyProfile: React.FC = () => {
 				<div className={style.ProfileBackground}>
 					<Navbar />
 					<div className={style.wholeProfileDiv}>
-						<LeftUserInfo />
+						<LeftUserInfo visitedUser={visitedUser} />
 						<div className={style.mainDiv}>
 							<div className={style.coverDiv}>
-								<div className={style.coverPhotoDiv}>
-									<img className={style.coverPic} src={data?.userData.coverPicture} alt="user's cover photo" />
+								<div className={`${style.coverPhotoDiv} ${!data.userData.coverPicture && style.noCoverImage}`}>
+									{data.userData.coverPicture && <img className={style.coverPic} src={data?.userData.coverPicture} alt="user's cover photo" />}
 									<div className={style.profilePhotoDiv}>
-										<img className={style.photoPic} src={data?.userData.profilePicture} alt="user's profile picture" />
+										<img
+											className={style.photoPic}
+											src={
+												data?.userData.profilePicture
+													? data.userData.profilePicture
+													: "https://res.cloudinary.com/dmrlrtwbb/image/upload/v1694760858/24-248253_user-profile-default-image-png-clipart-png-download_zurjod.png"
+											}
+											alt="user's profile picture"
+										/>
 									</div>
 								</div>
 								<div className={style.userInfoNameDiv}>
@@ -56,10 +83,10 @@ const MyProfile: React.FC = () => {
 									</div>
 								</div>
 							</div>
-							<SingleUserPosts userID={userID} />
+							<SingleUserPosts userID={visitedProfileID} />
 						</div>
 
-						<RightSponsors />
+						<RightSponsors visitedProfileID={data.userData._id} visitedProfileFirstName={data.userData.firstName} />
 					</div>
 				</div>
 			)}
@@ -67,4 +94,4 @@ const MyProfile: React.FC = () => {
 	);
 };
 
-export default MyProfile;
+export default EachProfile;

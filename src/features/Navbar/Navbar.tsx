@@ -12,7 +12,7 @@ import ModalContent from "../../components/ModalContent/ModalContent";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar: React.FC = () => {
-	const userPicture = useAppSelector((state) => state.user.profilePicture);
+	const user = useAppSelector((state) => state.user);
 
 	const [mobileDropDown, setMobileDropDown] = useState(false);
 	const [logoutPopUp, setLogoutPopUp] = useState(false);
@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
 								<AiOutlineEdit className={style.dropdownIcon} />
 								<p>Edit Profile</p>
 							</li>
-							<Link to="/my-profile">
+							<Link to={`/profile/${user._id}`}>
 								<AiOutlineUser className={style.dropdownIcon} />
 								<p>Your Profile</p>
 							</Link>
@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
 							</li>
 						</ul>
 					</li>
-					<NavLink to="/my-profile" className={style.rightIcon3}>
+					<NavLink to={`/profile/${user._id}`} className={style.rightIcon3}>
 						<BiSolidUser />
 					</NavLink>
 					<li className={style.rightIconReport} onClick={() => setLogoutPopUp((s) => !s)}>
@@ -79,7 +79,7 @@ const Navbar: React.FC = () => {
 					>
 						<GiHamburgerMenu className={`${mobileDropDown ? style.colouring : ""}`} />
 						<ul className={style.hamBurgerList} ref={dropDownRef} onClick={(e) => e.stopPropagation()}>
-							<Link to="/my-profile">
+							<Link to={`/profile/${user._id}`}>
 								<AiOutlineUser />
 								<p>Your Profile</p>
 							</Link>
@@ -95,7 +95,7 @@ const Navbar: React.FC = () => {
 					</li>
 					<li className={style.profilePictureDiv}>
 						<img
-							src={userPicture ? userPicture : "https://res.cloudinary.com/dmrlrtwbb/image/upload/v1694760858/24-248253_user-profile-default-image-png-clipart-png-download_zurjod.png"}
+							src={user.profilePicture ? user.profilePicture : "https://res.cloudinary.com/dmrlrtwbb/image/upload/v1694760858/24-248253_user-profile-default-image-png-clipart-png-download_zurjod.png"}
 							alt="user's picture"
 							className={style.profilePicture}
 						/>

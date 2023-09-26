@@ -11,3 +11,6 @@ body,
 #root {
 	width: 100%;
 }
+.active {
+	color: #0202c4af !important;
+}

@@ -1,0 +1,272 @@
+.ProfileBackground {
+	background-color: rgba(189, 188, 188, 0.197);
+}
+.mainDiv {
+	width: 50%;
+}
+.wholeProfileDiv {
+	display: flex;
+	width: 90%;
+	margin: 30px auto 0 auto;
+	justify-content: space-between;
+}
+.coverPhotoDiv {
+	width: 100%;
+	margin: auto;
+	position: relative;
+}
+.coverPic {
+	width: 100%;
+}
+.coverDiv {
+	background-color: white;
+	width: 95%;
+	margin: auto;
+}
+.profilePhotoDiv {
+	position: absolute;
+	bottom: -105px;
+	left: 50%;
+	width: 110px;
+	height: 110px;
+	border-radius: 50%;
+	overflow: hidden;
+	z-index: 5;
+	transform: translate(-50%, -50%);
+}
+.photoPic {
+	width: 100%;
+}
+.noCoverImage {
+	background-image: linear-gradient(to right, #8ab8ed, #4b6bf9);
+	height: 180px;
+}
+.userInfoNameDiv {
+	padding: 0px 25px 15px 25px;
+	margin-top: 8px;
+	display: flex;
+	justify-content: space-between;
+}
+.userName {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+.userNameDiv {
+	display: flex;
+	flex-direction: column;
+	font-family: "Poppins", sans-serif;
+	text-align: center;
+	justify-content: space-evenly;
+	/* border: 2px solid red; */
+}
+.userLocation {
+	font-size: 0.8rem;
+	display: flex;
+	gap: 4px;
+	align-items: center;
+	font-weight: 500;
+	color: rgba(0, 0, 0, 0.515);
+}
+.locationIcon {
+	font-size: 0.7rem;
+	color: rgba(0, 0, 0, 0.659);
+}
+.otherInfoDiv {
+	display: flex;
+	gap: 1.1rem;
+}
+.eachInfoDiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+.eachInfoHead {
+	font-size: 0.9rem;
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+}
+.eachInfoval {
+	text-align: center;
+	font-family: "Poppins", sans-serif;
+	font-size: 0.8rem;
+	font-weight: 500;
+	color: #0039a6;
+}
+@media screen and (max-width: 1409px) {
+	.otherInfoDiv {
+		gap: 0.7rem;
+	}
+	.userInfoNameDiv {
+		padding: 0px 15px 15px 15px;
+	}
+}
+@media screen and (max-width: 1294px) {
+	.userInfoNameDiv {
+		padding: 0px 7px 15px 7px;
+	}
+}
+@media screen and (max-width: 1242px) {
+	.wholeProfileDiv {
+		width: 95%;
+	}
+}
+@media screen and (max-width: 1183px) {
+	.otherInfoDiv {
+		gap: 0.4rem;
+	}
+}
+@media screen and (max-width: 1130px) {
+	.wholeProfileDiv {
+		width: 98%;
+	}
+}
+@media screen and (max-width: 1099px) {
+	.otherInfoDiv {
+		gap: 0.8rem;
+	}
+	.eachInfoHead {
+		font-size: 0.8rem;
+	}
+}
+@media screen and (max-width: 1071px) {
+	.wholeProfileDiv {
+		width: 85%;
+	}
+	.mainDiv {
+		width: 65%;
+	}
+	.coverDiv {
+		margin: initial;
+	}
+	.eachInfoHead {
+		font-size: 0.9rem;
+	}
+}
+@media screen and (max-width: 1034px) {
+	.otherInfoDiv {
+		gap: 0.6rem;
+	}
+}
+@media screen and (max-width: 1005px) {
+	.profilePhotoDiv {
+		height: 85px;
+		width: 85px;
+		bottom: -80px;
+	}
+}
+@media screen and (max-width: 960px) {
+	.wholeProfileDiv {
+		width: 90%;
+	}
+}
+@media screen and (max-width: 905px) {
+	.wholeProfileDiv {
+		width: 95%;
+	}
+}
+@media screen and (max-width: 870px) {
+	.wholeProfileDiv {
+		width: 98%;
+	}
+}
+@media screen and (max-width: 822px) {
+	.eachInfoHead {
+		font-size: 0.8rem;
+	}
+}
+@media screen and (max-width: 815px) {
+	.mainDiv {
+		width: 70%;
+	}
+}
+@media screen and (max-width: 799px) {
+	.wholeProfileDiv {
+		width: 80%;
+		justify-content: center;
+	}
+	.mainDiv,
+	.coverDiv {
+		width: 100%;
+	}
+	.userInfoNameDiv {
+		padding: 0px 25px 15px 25px;
+	}
+	.otherInfoDiv {
+		gap: 1.1rem;
+	}
+	.eachInfoHead {
+		font-size: 0.9rem;
+	}
+}
+@media screen and (max-width: 771px) {
+	.userInfoNameDiv {
+		padding: 0px 15px 15px 15px;
+	}
+}
+@media screen and (max-width: 686px) {
+	.otherInfoDiv {
+		gap: 0.7rem;
+	}
+	.userInfoNameDiv {
+		padding: 0px 10px 15px 10px;
+	}
+}
+@media screen and (max-width: 638px) {
+	.wholeProfileDiv {
+		width: 90%;
+	}
+}
+@media screen and (max-width: 572px) {
+	.wholeProfileDiv {
+		width: 95%;
+	}
+}
+@media screen and (max-width: 533px) {
+	.eachInfoHead {
+		font-size: 0.7rem;
+	}
+}
+@media screen and (max-width: 460px) {
+	.wholeProfileDiv {
+		width: 100%;
+	}
+}
+@media screen and (max-width: 448px) {
+	.userInfoNameDiv {
+		padding: 0px 5px 15px 5px;
+	}
+}
+@media screen and (max-width: 416px) {
+	.profilePhotoDiv {
+		width: 70px;
+		height: 70px;
+		bottom: -70px;
+	}
+	.userName {
+		font-size: 1.2rem;
+	}
+	.userLocation {
+		font-size: 0.6rem;
+	}
+	.locationIcon {
+		font-size: 0.4rem;
+		color: rgba(0, 0, 0, 0.659);
+	}
+	.otherInfoDiv {
+		gap: 0.5rem;
+	}
+	.eachInfoHead {
+		font-size: 0.6rem;
+	}
+	.eachInfoval {
+		font-size: 0.6rem;
+	}
+}
+@media screen and (max-width: 355px) {
+	.eachInfoHead {
+		font-size: 0.5rem;
+	}
+	.eachInfoval {
+		font-size: 0.5rem;
+	}
+}

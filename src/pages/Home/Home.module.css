@@ -53,3 +53,8 @@
 		width: 95%;
 	}
 }
+@media screen and (max-width: 460px) {
+	.heroSection {
+		width: 100%;
+	}
+}

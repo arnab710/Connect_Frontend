@@ -20,6 +20,7 @@
 	width: 55px;
 	border-radius: 50%;
 	overflow: hidden;
+	cursor: pointer;
 	/* border: 1px solid red; */
 }
 .postUserPictureSkeleton {
@@ -34,6 +35,7 @@
 	font-size: 1.05rem;
 	font-weight: 700;
 	font-family: "Poppins", sans-serif;
+	cursor: pointer;
 }
 .userInfoDiv {
 	width: 89%;
