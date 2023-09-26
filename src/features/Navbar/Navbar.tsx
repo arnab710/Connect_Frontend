@@ -1,6 +1,5 @@
 import { FiSearch } from "react-icons/fi";
-import { MdNotifications } from "react-icons/md";
-import { AiFillSetting, AiOutlineUser, AiOutlineEdit } from "react-icons/ai";
+import { AiFillSetting, AiOutlineUser, AiOutlineEdit, AiFillHome } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BiSolidUser, BiLogOut } from "react-icons/bi";
 import React, { useEffect, useRef, useState } from "react";
@@ -44,9 +43,9 @@ const Navbar: React.FC = () => {
 					</div>
 				</div>
 				<ul className={style.navBarRightDiv}>
-					<li className={style.rightIcon1}>
-						<MdNotifications />
-					</li>
+					<NavLink to="/" className={style.rightIcon1}>
+						<AiFillHome />
+					</NavLink>
 					<li className={style.rightIcon2}>
 						<AiFillSetting />
 						<ul className={style.settingIconBar}>
@@ -79,6 +78,10 @@ const Navbar: React.FC = () => {
 					>
 						<GiHamburgerMenu className={`${mobileDropDown ? style.colouring : ""}`} />
 						<ul className={style.hamBurgerList} ref={dropDownRef} onClick={(e) => e.stopPropagation()}>
+							<Link to="/">
+								<AiFillHome />
+								<p>Home</p>
+							</Link>
 							<Link to={`/profile/${user._id}`}>
 								<AiOutlineUser />
 								<p>Your Profile</p>

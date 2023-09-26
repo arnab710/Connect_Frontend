@@ -163,6 +163,7 @@
 	font-family: "Poppins", sans-serif;
 	font-size: 1.2rem;
 	font-weight: 600;
+	color: black;
 }
 .mobileDropDownTrue .hamBurgerList {
 	left: 0px;
