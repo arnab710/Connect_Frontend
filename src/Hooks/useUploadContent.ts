@@ -19,7 +19,6 @@ const uploadPost = async (file: File, inputDescription: string) => {
 	});
 
 	const data = (await response.json()) as { result: "pass"; message: string } | APIFail;
-	console.log(data);
 	if (data.result === "fail") throw new Error(data.message);
 	return data;
 };

@@ -8,13 +8,14 @@ import useFetchUserInfo from "../../Hooks/useFetchUserInfo";
 import SingleUserPosts from "../../features/SingleUserPosts/SingleUserPosts";
 import LeftUserInfo from "../../features/LeftSideUserInfo/LeftUserInfo";
 import RightSponsors from "../../features/RightSponsors/RightSponsors";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { userInfoFetch } from "../../Types/userInfoFetchType";
 
 const EachProfile: React.FC = () => {
 	const visitedProfileID = useParams().userID as string;
 
 	const location = useLocation();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -57,7 +58,7 @@ const EachProfile: React.FC = () => {
 											alt="user's profile picture"
 										/>
 									</div>
-									<div className={style.coverPhotoEditDiv}>
+									<div className={style.coverPhotoEditDiv} onClick={() => navigate("/profileSetting")}>
 										<FiEdit2 />
 									</div>
 								</div>

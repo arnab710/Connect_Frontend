@@ -1,0 +1,88 @@
+.fileInputDiv {
+	width: 570px;
+	margin-top: 30px;
+}
+.cropperDiv {
+	max-height: 70vh;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.cropperMain {
+	width: 100%;
+}
+.btnDiv {
+	margin-top: 20px;
+	display: flex;
+	justify-content: flex-end;
+	gap: 1.5rem;
+}
+.cancelBtn {
+	background-color: white;
+	font-family: "Poppins", sans-serif;
+	font-size: 0.9rem;
+	font-weight: 500;
+	border: none;
+	width: 4.6rem;
+	height: 40px;
+	outline: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s;
+	border-radius: 5px;
+	cursor: pointer;
+	&:hover {
+		background-color: #f3f4f6;
+	}
+}
+.uploadBtn {
+	font-family: "Poppins", sans-serif;
+	border: none;
+	outline: none;
+	width: 4.6rem;
+	height: 40px;
+	font-size: 0.9rem;
+	font-weight: 500;
+	background-color: #0039a6;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	letter-spacing: 0.02rem;
+	border-radius: 5px;
+	color: white;
+	cursor: pointer;
+	transition: all 0.2s;
+	&:hover {
+		background-color: #002a78;
+	}
+}
+@media screen and (max-width: 635px) {
+	.fileInputDiv {
+		width: 500px;
+	}
+}
+@media screen and (max-width: 542px) {
+	.fileInputDiv {
+		width: 450px;
+	}
+}
+@media screen and (max-width: 497px) {
+	.fileInputDiv {
+		width: 400px;
+	}
+}
+@media screen and (max-width: 439px) {
+	.fileInputDiv {
+		width: 350px;
+	}
+}
+@media screen and (max-width: 399px) {
+	.fileInputDiv {
+		width: 300px;
+	}
+}
+@media screen and (max-width: 345px) {
+	.fileInputDiv {
+		width: 250px;
+	}
+}

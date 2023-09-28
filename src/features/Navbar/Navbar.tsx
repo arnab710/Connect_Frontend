@@ -49,10 +49,10 @@ const Navbar: React.FC = () => {
 					<li className={style.rightIcon2}>
 						<AiFillSetting />
 						<ul className={style.settingIconBar}>
-							<li>
+							<Link to="/profileSetting">
 								<AiOutlineEdit className={style.dropdownIcon} />
 								<p>Edit Profile</p>
-							</li>
+							</Link>
 							<Link to={`/profile/${user._id}`}>
 								<AiOutlineUser className={style.dropdownIcon} />
 								<p>Your Profile</p>

@@ -53,18 +53,17 @@ const Button = styled.button`
 	}
 `;
 
-function Modal({ children, onClose }: { children: React.ReactNode; onClose: () => void }) {
+function Modal({ children, onClose, isOutSideClickClose = true }: { children: React.ReactNode; onClose: () => void; isOutSideClickClose?: boolean }) {
 	const ref = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
 		const handleClick = (e: MouseEvent) => {
 			if (ref.current && !ref.current.contains(e.target as Node)) onClose();
 		};
-
-		document.addEventListener("click", handleClick, true);
+		if (isOutSideClickClose) document.addEventListener("click", handleClick, true);
 
 		return () => document.removeEventListener("click", handleClick, true);
-	}, [onClose]);
+	}, [onClose, isOutSideClickClose]);
 
 	return createPortal(
 		<Overlay>

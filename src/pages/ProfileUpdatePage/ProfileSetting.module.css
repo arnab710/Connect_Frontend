@@ -1,0 +1,211 @@
+.backgroundDiv {
+	width: 100%;
+	min-height: 100vh;
+	background-color: rgba(189, 188, 188, 0.197);
+	/* border: 2px solid red; */
+}
+.mainDiv {
+	width: 850px;
+	margin: 30px auto 0 auto;
+	background-color: white;
+}
+.backgroundImgDiv {
+	position: relative;
+	width: 100%;
+	padding: 20px 20px 0 20px;
+	background-color: white;
+}
+.cameraIcon1 {
+	font-size: 1.2rem;
+	color: white;
+}
+
+.coverImg {
+	width: 100%;
+}
+.mainEditSectionDiv {
+	/* border: 2px solid red; */
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+.imgDiv {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin-top: 20px;
+	position: relative;
+}
+.profilePicture {
+	width: 100%;
+}
+.infoDiv {
+	width: 550px;
+	padding: 16px;
+	/* border: 2px solid red; */
+}
+.editProfileHead {
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+	font-size: 1.5rem;
+	margin-bottom: 30px;
+}
+.bioAreaDiv {
+	margin-top: 20px;
+}
+.bioLabel {
+	display: block;
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+.textArea {
+	font-family: "Poppins", sans-serif;
+	width: 100%;
+	background-color: rgba(189, 188, 188, 0.197);
+	outline: none;
+	border: none;
+	padding: 10px;
+	border-radius: 20px;
+	margin-top: 10px;
+}
+.hiddenInput {
+	display: none;
+}
+.inputLabel {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.274);
+}
+.inputLabel2 {
+	position: absolute;
+	top: 15px;
+	right: 40px;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.274);
+}
+.btnDiv {
+	margin: 20px 0;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 1.2rem;
+}
+.buttonUpdate,
+.buttonBack {
+	font-family: "Poppins", sans-serif;
+	padding: 10px;
+	width: 80px;
+	outline: none;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 1rem;
+}
+.buttonBack {
+	background-color: white;
+	transition: all 0.2s;
+	&:hover {
+		background-color: #f3f4f6;
+	}
+}
+.buttonUpdate {
+	background-color: #0039a6;
+	transition: all 0.2s;
+	color: white;
+	&:hover {
+		background-color: #002871;
+	}
+}
+@media screen and (max-width: 872px) {
+	.mainDiv {
+		width: 750px;
+	}
+	.infoDiv {
+		width: 450px;
+	}
+	.imgDiv {
+		width: 180px;
+		height: 180px;
+	}
+}
+@media screen and (max-width: 782px) {
+	.mainDiv {
+		width: 700px;
+	}
+}
+@media screen and (max-width: 702px) {
+	.mainDiv {
+		width: 650px;
+	}
+	.infoDiv {
+		width: 400px;
+	}
+}
+@media screen and (max-width: 662px) {
+	.mainDiv {
+		width: 100%;
+	}
+	.backgroundImgDiv {
+		padding: 0;
+	}
+	.inputLabel {
+		top: 10px;
+		right: 10px;
+	}
+	.infoDiv {
+		width: 350px;
+	}
+}
+@media screen and (max-width: 592px) {
+	.imgDiv {
+		width: 160px;
+		height: 160px;
+	}
+	.inputLabel2 {
+		top: 15px;
+		right: 20px;
+	}
+}
+@media screen and (max-width: 554px) {
+	.infoDiv {
+		padding: 4px;
+		width: 95%;
+		margin: auto;
+	}
+	.mainEditSectionDiv {
+		display: block;
+	}
+	.imgDiv {
+		margin: auto;
+	}
+	.editProfileHead {
+		margin-top: 15px;
+		text-align: center;
+	}
+}
+@media screen and (max-width: 409px) {
+	.imgDiv {
+		width: 120px;
+		height: 120px;
+	}
+	.inputLabel2 {
+		top: 10px;
+		right: 10px;
+	}
+}

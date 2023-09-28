@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import MyProfile from "./pages/EachProfile/EachProfile";
+import ProfileSetting from "./pages/ProfileUpdatePage/ProfileSetting";
 
 const App: React.FC = () => {
 	const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App: React.FC = () => {
 					<Route path="/" element={<ProtectedLayout />}>
 						<Route index element={<Home />} />
 						<Route path="/profile/:userID" element={<MyProfile />} />
+						<Route path="/profileSetting" element={<ProfileSetting />} />
 					</Route>
 					<Route path="/login" element={<Login />} />
 					<Route path="/signup" element={<Signup />} />

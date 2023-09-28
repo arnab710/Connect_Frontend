@@ -1,4 +1,6 @@
 .HomeBackground {
+	width: 100%;
+	min-height: 100vh;
 	background-color: rgba(189, 188, 188, 0.197);
 }
 .heroSection {
