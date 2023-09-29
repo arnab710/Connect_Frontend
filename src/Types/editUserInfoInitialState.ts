@@ -6,4 +6,5 @@ export interface editUserInfoInitialState {
 	city: string;
 	country: string;
 	bio: string;
+	occupation: string;
 }

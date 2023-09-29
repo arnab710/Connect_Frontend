@@ -17,6 +17,8 @@ export const userInfoReducer = (state: editUserInfoInitialState, action: ActionU
 			return { ...state, country: action.payload };
 		case "bio":
 			return { ...state, bio: action.payload };
+		case "occupation":
+			return { ...state, occupation: action.payload };
 		case "updateProfilePicture":
 			return { ...state, updateProfilePicture: action.payload };
 		case "updateCoverPhoto":

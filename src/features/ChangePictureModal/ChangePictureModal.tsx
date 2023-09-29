@@ -6,9 +6,13 @@ import style from "./ChangePictureModal.module.css";
 import useUpdatePhoto from "../../Hooks/useUpdatePhoto";
 import SmallBtnSpinner from "../SmallBtnSpinner/SmallBtnSpinner";
 
-const ChangePictureModal: React.FC<{ setOpenModal: React.Dispatch<React.SetStateAction<boolean>>; image: string }> = ({ setOpenModal, image }) => {
+const ChangePictureModal: React.FC<{ setOpenModal: React.Dispatch<React.SetStateAction<boolean>>; image: string; fileType: "profile-picture" | "cover-photo" | null }> = ({
+	setOpenModal,
+	image,
+	fileType,
+}) => {
 	const cropperRef = useRef<ReactCropperElement | null>(null);
-	const { mutate, isLoading } = useUpdatePhoto(setOpenModal);
+	const { mutate, isLoading } = useUpdatePhoto(setOpenModal, fileType);
 
 	const getCropData = () => {
 		const imageElement = cropperRef?.current;
@@ -31,12 +35,12 @@ const ChangePictureModal: React.FC<{ setOpenModal: React.Dispatch<React.SetState
 			void URLToFile();
 		}
 	};
+
+	const aspectRatio = fileType === "cover-photo" ? 820 / 312 : 1;
 	return (
 		<Modal onClose={() => setOpenModal(false)} isOutSideClickClose={false}>
 			<div className={style.fileInputDiv}>
-				<div className={style.cropperDiv}>
-					<Cropper src={image} ref={cropperRef} className={style.cropperMain} viewMode={3} aspectRatio={820 / 312} guides={true} />
-				</div>
+				<Cropper src={image} ref={cropperRef} className={style.cropperMain} viewMode={3} aspectRatio={aspectRatio} guides={true} />
 				<div className={style.btnDiv}>
 					<button onClick={() => setOpenModal(false)} className={style.cancelBtn}>
 						Cancel

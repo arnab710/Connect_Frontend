@@ -111,6 +111,10 @@
 	font-family: "Poppins", sans-serif;
 	padding: 10px;
 	width: 80px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	outline: none;
 	border: none;
 	border-radius: 10px;
