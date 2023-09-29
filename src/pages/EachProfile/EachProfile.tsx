@@ -10,10 +10,11 @@ import LeftUserInfo from "../../features/LeftSideUserInfo/LeftUserInfo";
 import RightSponsors from "../../features/RightSponsors/RightSponsors";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { userInfoFetch } from "../../Types/userInfoFetchType";
+import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
 
 const EachProfile: React.FC = () => {
 	const visitedProfileID = useParams().userID as string;
-
+	const myID = useAppSelector((state) => state.user._id);
 	const location = useLocation();
 	const navigate = useNavigate();
 
@@ -58,9 +59,11 @@ const EachProfile: React.FC = () => {
 											alt="user's profile picture"
 										/>
 									</div>
-									<div className={style.coverPhotoEditDiv} onClick={() => navigate("/profileSetting")}>
-										<FiEdit2 />
-									</div>
+									{visitedProfileID === myID && (
+										<div className={style.coverPhotoEditDiv} onClick={() => navigate("/profileSetting")}>
+											<FiEdit2 />
+										</div>
+									)}
 								</div>
 								<div className={style.userInfoNameDiv}>
 									<div className={style.userNameDiv}>

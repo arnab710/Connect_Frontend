@@ -8,11 +8,12 @@ import Icon from "../Icon/Icon";
 import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
 import useLogout from "../../Hooks/useLogout";
 import ModalContent from "../../components/ModalContent/ModalContent";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Navbar: React.FC = () => {
 	const user = useAppSelector((state) => state.user);
 
+	const Navigate = useNavigate();
 	const [mobileDropDown, setMobileDropDown] = useState(false);
 	const [logoutPopUp, setLogoutPopUp] = useState(false);
 	const dropDownRef = useRef<HTMLUListElement | null>(null);
@@ -96,7 +97,7 @@ const Navbar: React.FC = () => {
 							</li>
 						</ul>
 					</li>
-					<li className={style.profilePictureDiv}>
+					<li className={style.profilePictureDiv} onClick={() => Navigate(`/profile/${user._id}`)}>
 						<img
 							src={user.profilePicture ? user.profilePicture : "https://res.cloudinary.com/dmrlrtwbb/image/upload/v1694760858/24-248253_user-profile-default-image-png-clipart-png-download_zurjod.png"}
 							alt="user's picture"

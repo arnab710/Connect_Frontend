@@ -2,6 +2,7 @@ import { ImLocation2 } from "react-icons/im";
 import { PiSuitcaseFill } from "react-icons/pi";
 import React from "react";
 import style from "./LeftUserInfo.module.css";
+import { useNavigate } from "react-router-dom";
 
 const LeftUserInfo: React.FC<{
 	visitedUser: {
@@ -16,11 +17,13 @@ const LeftUserInfo: React.FC<{
 		followers: { user: string; _id?: string }[];
 	};
 }> = ({ visitedUser }) => {
+	const Navigate = useNavigate();
+
 	return (
 		<div className={style.backgroundDiv}>
 			<div className={style.contentBox}>
 				<div className={style.photoUserDetails}>
-					<div className={style.userPhotoDiv}>
+					<div className={style.userPhotoDiv} onClick={() => Navigate(`/profile/${visitedUser._id}`)}>
 						<img
 							src={
 								visitedUser.profilePicture
@@ -32,7 +35,7 @@ const LeftUserInfo: React.FC<{
 						/>
 					</div>
 					<div className={style.photoInfo}>
-						<h1 className={style.userFullName}>
+						<h1 className={style.userFullName} onClick={() => Navigate(`/profile/${visitedUser._id}`)}>
 							<span>{visitedUser.firstName}</span>
 							<span>{visitedUser.lastName}</span>
 						</h1>
