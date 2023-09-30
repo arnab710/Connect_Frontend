@@ -23,7 +23,7 @@ const ForgotPasswordForm: React.FC = () => {
 					<AiOutlineMail className={style.emailIcon} />
 					<input type="email" id="email-input" placeholder="john@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} className={style.inputEmail} />
 				</div>
-				<button className={style.submitBtn} disabled={isLoading} onClick={() => mutate({ email })}>
+				<button className={style.submitBtn} disabled={isLoading || isSuccess} onClick={() => mutate({ email })}>
 					{isLoading ? (
 						<p>
 							<SmallBtnSpinner height={1.15} width={1.15} />

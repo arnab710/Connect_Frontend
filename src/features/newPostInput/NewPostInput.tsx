@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import style from "./NewPostInput.module.css";
 import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
 import useUploadContent from "../../Hooks/useUploadContent";
-import toast from "react-hot-toast";
-import { styleObj } from "../../components/notifications/errorStyle";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 import SmallBtnSpinner from "../SmallBtnSpinner/SmallBtnSpinner";
@@ -51,11 +49,6 @@ const NewPostInput: React.FC = () => {
 	};
 
 	const handlePost = () => {
-		if (!fileInfo)
-			toast.error("No File Selected", {
-				style: styleObj,
-			});
-		if (!fileInfo) return null;
 		post({ fileInfo });
 	};
 

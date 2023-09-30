@@ -3,13 +3,14 @@ import { APIFail } from "../Types/APIFailResponseTypes";
 import toast from "react-hot-toast";
 import { styleObj } from "../components/notifications/errorStyle";
 
-const uploadPost = async (file: File, inputDescription: string) => {
+const uploadPost = async (file: File | null, inputDescription: string) => {
 	const formData = new FormData();
-	formData.append("file", file);
+	if (file) formData.append("file", file);
 	formData.append("description", inputDescription);
-	if (file.type.startsWith("image")) formData.append("fileType", "image-post");
-	else formData.append("fileType", file.type.split("/")[0]);
-
+	if (file) {
+		if (file.type.startsWith("image")) formData.append("fileType", "image-post");
+		else formData.append("fileType", file.type.split("/")[0]);
+	}
 	const API = `${import.meta.env.VITE_BACKEND_APP_PORT}/${import.meta.env.VITE_BACKEND_APP_API}/posts/new`;
 
 	const response = await fetch(API, {
@@ -32,7 +33,7 @@ const useUploadContent = (
 	const queryClient = useQueryClient();
 
 	const { mutate, isLoading, isError } = useMutation({
-		mutationFn: ({ fileInfo }: { fileInfo: File }) => uploadPost(fileInfo, inputDescription),
+		mutationFn: ({ fileInfo }: { fileInfo: File | null }) => uploadPost(fileInfo, inputDescription),
 		onSuccess: () => {
 			void queryClient.refetchQueries({ queryKey: ["InfinitePosts"] });
 			void queryClient.refetchQueries({ queryKey: ["InfiniteUserPosts", userID] });
