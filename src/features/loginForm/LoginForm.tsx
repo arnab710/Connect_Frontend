@@ -52,7 +52,7 @@ const LoginForm: React.FC = () => {
 					dispatchType="CHANGE_PASSWORD"
 					isLoginInput={true}
 				/>
-				<Link className={style.forgotPasswordLink} to="#">
+				<Link className={style.forgotPasswordLink} to="/forgot-password">
 					Forgot Password?
 				</Link>
 				<button className={style.signInBtn} onClick={handleSubmit} disabled={isLoading}>

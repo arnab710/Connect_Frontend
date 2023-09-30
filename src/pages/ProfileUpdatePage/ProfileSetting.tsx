@@ -1,5 +1,5 @@
 import { FiEdit2 } from "react-icons/fi";
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useEffect } from "react";
 import style from "./ProfileSetting.module.css";
 import { useAppSelector } from "../../Redux/ReduxAppType/AppType";
 import Navbar from "../../features/Navbar/Navbar";
@@ -9,7 +9,7 @@ import { userInfoReducer } from "../../Reducers/userInfoReducer";
 import ChangePictureModal from "../../features/ChangePictureModal/ChangePictureModal";
 import useUpdateDetails from "../../Hooks/useUpdateDetails";
 import SmallBtnSpinner from "../../features/SmallBtnSpinner/SmallBtnSpinner";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ProfileSetting: React.FC = () => {
 	const [openModalWindow, setIsOpenModalWindow] = useState(false);
@@ -17,6 +17,11 @@ const ProfileSetting: React.FC = () => {
 	const [image, setImage] = useState<string | null>(null);
 	const user = useAppSelector((state) => state.user);
 	const Navigate = useNavigate();
+
+	const location = useLocation();
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [location.pathname]);
 
 	const initialState: editUserInfoInitialState = {
 		firstName: user.firstName,
@@ -51,8 +56,8 @@ const ProfileSetting: React.FC = () => {
 		<div className={style.backgroundDiv}>
 			<Navbar />
 			<main className={style.mainDiv}>
-				<div className={style.backgroundImgDiv}>
-					<img src={user.coverPicture} alt="user's cover photo" className={style.coverImg} />
+				<div className={`${style.backgroundImgDiv} ${!user.coverPicture && style.noCoverImage}`}>
+					{user.coverPicture && <img src={user.coverPicture} alt="user's cover photo" className={style.coverImg} />}
 
 					<label htmlFor="image-upload" className={style.inputLabel}>
 						<FiEdit2 className={style.cameraIcon1} />
@@ -61,7 +66,11 @@ const ProfileSetting: React.FC = () => {
 				</div>
 				<div className={style.mainEditSectionDiv}>
 					<div className={style.imgDiv}>
-						<img src={user.profilePicture} alt="user's profile picture" className={style.profilePicture} />
+						<img
+							src={user.profilePicture ? user.profilePicture : `https://res.cloudinary.com/dmrlrtwbb/image/upload/v1694760858/24-248253_user-profile-default-image-png-clipart-png-download_zurjod.png`}
+							alt="user's profile picture"
+							className={style.profilePicture}
+						/>
 						<label htmlFor="image-upload2" className={style.inputLabel2}>
 							<FiEdit2 className={style.cameraIcon1} />
 						</label>

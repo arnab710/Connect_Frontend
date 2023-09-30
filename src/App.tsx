@@ -9,6 +9,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import MyProfile from "./pages/EachProfile/EachProfile";
 import ProfileSetting from "./pages/ProfileUpdatePage/ProfileSetting";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
 const App: React.FC = () => {
 	const queryClient = new QueryClient();
@@ -25,6 +27,8 @@ const App: React.FC = () => {
 					</Route>
 					<Route path="/login" element={<Login />} />
 					<Route path="/signup" element={<Signup />} />
+					<Route path="/forgot-password" element={<ForgotPassword />} />
+					<Route path="/Reset-Password/:resetToken" element={<ResetPassword />} />
 				</Routes>
 			</BrowserRouter>
 			<Toaster

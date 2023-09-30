@@ -45,6 +45,10 @@
 	padding: 16px;
 	/* border: 2px solid red; */
 }
+.noCoverImage {
+	background-image: linear-gradient(to right, #8ab8ed, #4b6bf9);
+	height: 250px;
+}
 .editProfileHead {
 	font-family: "Poppins", sans-serif;
 	font-weight: 600;
