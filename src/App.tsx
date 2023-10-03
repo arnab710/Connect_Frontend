@@ -11,6 +11,7 @@ import MyProfile from "./pages/EachProfile/EachProfile";
 import ProfileSetting from "./pages/ProfileUpdatePage/ProfileSetting";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import NotFound from "./pages/NotFound/NotFound";
 
 const App: React.FC = () => {
 	const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App: React.FC = () => {
 					<Route path="/signup" element={<Signup />} />
 					<Route path="/forgot-password" element={<ForgotPassword />} />
 					<Route path="/Reset-Password/:resetToken" element={<ResetPassword />} />
+					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</BrowserRouter>
 			<Toaster
