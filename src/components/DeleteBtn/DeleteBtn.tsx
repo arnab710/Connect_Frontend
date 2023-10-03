@@ -7,7 +7,7 @@ import ModalContent from "../ModalContent/ModalContent";
 const DeleteBtn: React.FC<{ postID: string }> = ({ postID }) => {
 	const [isOpenModal, setIsOpenModal] = useState(false);
 
-	const { mutate: deletefn, isLoading } = useDeletePost(postID);
+	const { mutate: deletefn, isLoading } = useDeletePost(postID, setIsOpenModal);
 
 	return (
 		<>

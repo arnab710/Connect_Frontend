@@ -19,16 +19,20 @@ const deletePost = async (postID: string) => {
 	return data;
 };
 
-const useDeletePost = (postID: string) => {
+const useDeletePost = (postID: string, setIsOpenModal: React.Dispatch<React.SetStateAction<boolean>>) => {
 	const queryClient = useQueryClient();
 	const userID = useAppSelector((state) => state.user._id);
 
 	const { mutate, isLoading, isError } = useMutation({
 		mutationFn: () => deletePost(postID),
-		onSuccess: () => {
+		onSuccess: (data) => {
 			void queryClient.refetchQueries({ queryKey: ["InfinitePosts"] });
 			void queryClient.invalidateQueries({ queryKey: ["InfiniteUserPosts", userID] });
 			void queryClient.invalidateQueries({ queryKey: ["singleUserInfo", userID] });
+			setIsOpenModal((curr) => !curr);
+			toast.success(data.message, {
+				style: styleObj,
+			});
 		},
 		onError: (err: Error) => {
 			toast.error(err.message, {
