@@ -20,14 +20,15 @@ const useDeleteComment = (id: string, setCountComment: React.Dispatch<React.SetS
 	const queryClient = useQueryClient();
 	const { mutate, isLoading, isError } = useMutation({
 		mutationFn: () => DeleteComment(id),
-		onSuccess: (data) => {
+		onSuccess: async (data) => {
 			setCountComment((s) => s - 1);
-			void queryClient.invalidateQueries({ queryKey: ["topComments", postID] });
+			await queryClient.invalidateQueries({ queryKey: ["topComments", postID] });
+			await queryClient.invalidateQueries({ queryKey: ["InfinitePosts"] });
+			await queryClient.invalidateQueries({ queryKey: ["InfiniteUserPosts", userID] });
+
 			toast.success(data.message, {
 				style: styleObj,
 			});
-			void queryClient.invalidateQueries({ queryKey: ["InfinitePosts"] });
-			void queryClient.invalidateQueries({ queryKey: ["InfiniteUserPosts", userID] });
 		},
 		onError: (err: Error) => {
 			toast.error(err.message, {

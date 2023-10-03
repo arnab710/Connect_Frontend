@@ -78,7 +78,9 @@ const NewPostInput: React.FC = () => {
 						</div>
 					) : (
 						<>
-							<p>{fileInfo.name}</p>
+							<p>
+								{fileInfo.name} <span className={style.maxSize}> *(max 4MB)</span>
+							</p>
 							<Button onClick={() => setFileInfo(null)}>
 								<HiXMark />
 							</Button>

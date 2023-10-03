@@ -34,15 +34,15 @@ const useUploadContent = (
 
 	const { mutate, isLoading, isError } = useMutation({
 		mutationFn: ({ fileInfo }: { fileInfo: File | null }) => uploadPost(fileInfo, inputDescription),
-		onSuccess: () => {
-			void queryClient.refetchQueries({ queryKey: ["InfinitePosts"] });
-			void queryClient.refetchQueries({ queryKey: ["InfiniteUserPosts", userID] });
-			void queryClient.invalidateQueries({ queryKey: ["singleUserInfo", userID] });
+		onSuccess: async () => {
+			await queryClient.refetchQueries({ queryKey: ["InfinitePosts"] });
+			await queryClient.refetchQueries({ queryKey: ["InfiniteUserPosts", userID] });
+			await queryClient.invalidateQueries({ queryKey: ["singleUserInfo", userID] });
 			setFileInfo(null);
+			setInputDescription("");
 			toast.success("Your Post Uploaded Successfully", {
 				style: styleObj,
 			});
-			setInputDescription("");
 		},
 		onError: (err: Error) => {
 			setFileInfo(null);

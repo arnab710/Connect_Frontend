@@ -33,11 +33,11 @@ const useUpdatePhoto = (setIsOpenModal: React.Dispatch<React.SetStateAction<bool
 
 	const { mutate, isLoading, isError } = useMutation({
 		mutationFn: ({ file }: { file: File }) => uploadPicture({ file }, fileType),
-		onSuccess: (data) => {
+		onSuccess: async (data) => {
 			if (fileType === "cover-photo") dispatch(updateUserInfo({ coverPicture: data.imgFileLink }));
 			else dispatch(updateUserInfo({ profilePicture: data.imgFileLink }));
-			void queryClient.refetchQueries(["userInfo"]);
-			void queryClient.refetchQueries(["singleUserInfo", userID]);
+			await queryClient.refetchQueries(["userInfo"]);
+			await queryClient.refetchQueries(["singleUserInfo", userID]);
 			setIsOpenModal((curr) => !curr);
 			toast.success(`${fileType === "cover-photo" ? `Cover Photo Changed Successfully ` : `Profile Picture Changed Successfully`}`, {
 				style: styleObj,

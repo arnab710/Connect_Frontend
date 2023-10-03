@@ -33,12 +33,12 @@ const useUpdateDetails = (setIsOpenModal: React.Dispatch<React.SetStateAction<bo
 
 	const { mutate, isLoading, isError } = useMutation({
 		mutationFn: () => updateDetails(userInfo),
-		onSuccess: (data) => {
+		onSuccess: async (data) => {
 			const { firstName, lastName, bio, city, country, occupation } = userInfo;
 
 			dispatch(updateUserInfo({ firstName, lastName, bio, city, country, occupation }));
-			void queryClient.refetchQueries(["userInfo"]);
-			void queryClient.refetchQueries(["singleUserInfo", userID]);
+			await queryClient.refetchQueries(["userInfo"]);
+			await queryClient.refetchQueries(["singleUserInfo", userID]);
 			setIsOpenModal((curr) => !curr);
 			toast.success(data.message, {
 				style: styleObj,
