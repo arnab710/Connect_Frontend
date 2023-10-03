@@ -87,10 +87,10 @@ const Navbar: React.FC = () => {
 								<AiOutlineUser />
 								<p>Your Profile</p>
 							</Link>
-							<li>
+							<Link to="/profileSetting">
 								<AiOutlineEdit />
 								<p>Edit Profile</p>
-							</li>
+							</Link>
 							<li onClick={() => setLogoutPopUp((s) => !s)} className={style.redLogOut}>
 								<BiLogOut />
 								<p>Log Out</p>
