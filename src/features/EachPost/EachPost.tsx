@@ -75,9 +75,7 @@ const EachPost: React.FC<PostPropType> = ({ post }) => {
 						videoRef.current.pause();
 					}
 				} catch (err) {
-					toast.error("This Video Can't Be Played", {
-						style: styleObj,
-					});
+					if (import.meta.env.VITE_APP_ENV === "development") console.log(err);
 				}
 			}
 		};
