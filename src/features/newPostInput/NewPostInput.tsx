@@ -7,6 +7,8 @@ import useUploadContent from "../../Hooks/useUploadContent";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 import SmallBtnSpinner from "../SmallBtnSpinner/SmallBtnSpinner";
+import toast from "react-hot-toast";
+import { styleObj } from "../../components/notifications/errorStyle";
 
 const Button = styled.button`
 	background: none;
@@ -49,6 +51,10 @@ const NewPostInput: React.FC = () => {
 	};
 
 	const handlePost = () => {
+		if (fileInfo && fileInfo?.size > 8 * 1024 * 1024)
+			return toast.error("Maximum File Size 8MB !!", {
+				style: styleObj,
+			});
 		post({ fileInfo });
 	};
 
@@ -79,7 +85,7 @@ const NewPostInput: React.FC = () => {
 					) : (
 						<>
 							<p>
-								{fileInfo.name} <span className={style.maxSize}> *(max 4MB)</span>
+								{fileInfo.name} <span className={style.maxSize}> *(max 8MB)</span>
 							</p>
 							<Button onClick={() => setFileInfo(null)}>
 								<HiXMark />
