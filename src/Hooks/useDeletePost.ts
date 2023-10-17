@@ -26,9 +26,12 @@ const useDeletePost = (postID: string, setIsOpenModal: React.Dispatch<React.SetS
 	const { mutate, isLoading, isError } = useMutation({
 		mutationFn: () => deletePost(postID),
 		onSuccess: async (data) => {
-			await queryClient.refetchQueries({ queryKey: ["InfinitePosts"] });
-			await queryClient.refetchQueries({ queryKey: ["InfiniteUserPosts", userID] });
-			await queryClient.invalidateQueries({ queryKey: ["singleUserInfo", userID] });
+			const promise1 = queryClient.refetchQueries({ queryKey: ["InfinitePosts"] });
+			const promise2 = queryClient.refetchQueries({ queryKey: ["InfiniteUserPosts", userID] });
+			const promise3 = queryClient.invalidateQueries({ queryKey: ["singleUserInfo", userID] });
+
+			await Promise.all([promise1, promise2, promise3]);
+
 			setIsOpenModal((curr) => !curr);
 			toast.success(data.message, {
 				style: styleObj,

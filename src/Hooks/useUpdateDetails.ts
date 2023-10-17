@@ -37,8 +37,11 @@ const useUpdateDetails = (setIsOpenModal: React.Dispatch<React.SetStateAction<bo
 			const { firstName, lastName, bio, city, country, occupation } = userInfo;
 
 			dispatch(updateUserInfo({ firstName, lastName, bio, city, country, occupation }));
-			await queryClient.refetchQueries(["userInfo"]);
-			await queryClient.refetchQueries(["singleUserInfo", userID]);
+			const promise1 = queryClient.refetchQueries(["userInfo"]);
+			const promise2 = queryClient.refetchQueries(["singleUserInfo", userID]);
+
+			await Promise.all([promise1, promise2]);
+
 			setIsOpenModal((curr) => !curr);
 			toast.success(data.message, {
 				style: styleObj,

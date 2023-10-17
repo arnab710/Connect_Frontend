@@ -22,9 +22,11 @@ const useDeleteComment = (id: string, setCountComment: React.Dispatch<React.SetS
 		mutationFn: () => DeleteComment(id),
 		onSuccess: async (data) => {
 			setCountComment((s) => s - 1);
-			await queryClient.invalidateQueries({ queryKey: ["topComments", postID] });
-			await queryClient.invalidateQueries({ queryKey: ["InfinitePosts"] });
-			await queryClient.invalidateQueries({ queryKey: ["InfiniteUserPosts", userID] });
+			const promise1 = queryClient.invalidateQueries({ queryKey: ["topComments", postID] });
+			const promise2 = queryClient.invalidateQueries({ queryKey: ["InfinitePosts"] });
+			const promise3 = queryClient.invalidateQueries({ queryKey: ["InfiniteUserPosts", userID] });
+
+			await Promise.all([promise1, promise2, promise3]);
 
 			toast.success(data.message, {
 				style: styleObj,

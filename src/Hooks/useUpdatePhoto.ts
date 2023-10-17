@@ -36,8 +36,11 @@ const useUpdatePhoto = (setIsOpenModal: React.Dispatch<React.SetStateAction<bool
 		onSuccess: async (data) => {
 			if (fileType === "cover-photo") dispatch(updateUserInfo({ coverPicture: data.imgFileLink }));
 			else dispatch(updateUserInfo({ profilePicture: data.imgFileLink }));
-			await queryClient.refetchQueries(["userInfo"]);
-			await queryClient.refetchQueries(["singleUserInfo", userID]);
+			const promise1 = queryClient.refetchQueries(["userInfo"]);
+			const promise2 = queryClient.refetchQueries(["singleUserInfo", userID]);
+
+			await Promise.all([promise1, promise2]);
+
 			setIsOpenModal((curr) => !curr);
 			toast.success(`${fileType === "cover-photo" ? `Cover Photo Changed Successfully ` : `Profile Picture Changed Successfully`}`, {
 				style: styleObj,
