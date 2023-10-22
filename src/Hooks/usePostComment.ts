@@ -28,12 +28,14 @@ const usePostComment = (id: string, comment: string, setCountComment: React.Disp
 
 	const { mutate, isError, isLoading } = useMutation({
 		mutationFn: () => postComment(id, comment),
-		onSuccess: () => {
-			void queryClient.invalidateQueries({ queryKey: ["topComments", id] });
+		onSuccess: async () => {
+			const promise1 = queryClient.invalidateQueries({ queryKey: ["topComments", id] });
 			setCountComment((c) => c + 1);
 			setInput("");
-			void queryClient.invalidateQueries({ queryKey: ["InfinitePosts"] });
-			void queryClient.invalidateQueries({ queryKey: ["InfiniteUserPosts", userID] });
+			const promise2 = queryClient.invalidateQueries({ queryKey: ["InfinitePosts"] });
+			const promise3 = queryClient.invalidateQueries({ queryKey: ["InfiniteUserPosts", userID] });
+
+			await Promise.all([promise1, promise2, promise3]);
 		},
 		onError: (err: Error) => {
 			toast.error(err.message, {
