@@ -3,7 +3,7 @@ import { allPostTypes } from "../Types/allPostTypes";
 import { APIFail } from "../Types/APIFailResponseTypes";
 
 const fetchPost = async (pageParam: number) => {
-	const API: string = `${import.meta.env.VITE_BACKEND_APP_PORT}/${import.meta.env.VITE_BACKEND_APP_API}/posts?limit=2&page=${pageParam}`;
+	const API: string = `${import.meta.env.VITE_BACKEND_APP_PORT}/${import.meta.env.VITE_BACKEND_APP_API}/posts?limit=4&page=${pageParam}`;
 	const response: Response = await fetch(API, {
 		method: "GET",
 		credentials: "include",
